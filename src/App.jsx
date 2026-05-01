@@ -335,11 +335,11 @@ const App = () => {
                     <p className="text-xl lg:text-2xl font-black">0234 357 767 00</p>
                   </div>
                 </a>
-                <a href="mailto:giardinagp@gmail.com" className="flex items-center gap-5 group">
+                <a href="mailto:Info@giohilft.com" className="flex items-center gap-5 group">
                   <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-[#84A07F] transition-all"><Mail size={24} /></div>
                   <div>
                     <p className="text-xs font-black uppercase tracking-widest opacity-50">E-Mail Adresse</p>
-                    <p className="text-xl lg:text-2xl font-black underline decoration-[#84A07F]">giardinagp@gmail.com</p>
+                    <p className="text-xl lg:text-2xl font-black underline decoration-[#84A07F]">Info@giohilft.com</p>
                   </div>
                 </a>
                 <div className="flex items-center gap-5">
