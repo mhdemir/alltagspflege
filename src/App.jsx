@@ -134,7 +134,10 @@ const App = () => {
                 {navLinks.map((link) => (
                   <button 
                     key={link.id} 
-                    onClick={() => scrollTo(link.id)}
+                    onClick={() => {
+                      console.log('Navigating to:', link.id);
+                      scrollTo(link.id);
+                    }}
                     className={`text-left text-lg font-bold border-b border-[#F3EFD2] pb-2 transition-colors ${activeSection === link.id ? 'text-[#84A07F]' : 'text-[#2D2E28]'}`}
                   >
                     {link.name}
