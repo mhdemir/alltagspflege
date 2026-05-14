@@ -10,9 +10,13 @@
   --background-image-brand-gradient: linear-gradient(135deg, #F3EFD2 0%, #AEA880 100%);
 }
 
-@layer base {
-  body {
-    @apply text-brand-text bg-brand-beige;
-    font-family: 'Inter', sans-serif;
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
+
