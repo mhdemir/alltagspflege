@@ -4,10 +4,6 @@ import { motion } from 'framer-motion';
 import { Heart, Star, Users, Coffee, Quote } from 'lucide-react';
 
 const AboutMe = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div className="bg-white text-[#2D2E28]">
       {/* Hero Section */}

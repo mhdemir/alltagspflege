@@ -4,10 +4,6 @@ import { CheckCircle2, ShieldCheck, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const SubPage = ({ title, subtitle, description, highlights, additionalContent, image }) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div className="bg-white text-[#2D2E28]">
       {/* Hero Section */}

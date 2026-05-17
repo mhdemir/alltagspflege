@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react';
 
 const Datenschutz = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div className="bg-white text-[#2D2E28] pt-32 pb-16 lg:pt-48 lg:pb-32">
       <div className="max-w-4xl mx-auto px-6">
