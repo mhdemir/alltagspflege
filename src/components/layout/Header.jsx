@@ -40,10 +40,10 @@ const Header = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled || location.pathname !== '/' ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-transparent py-2'}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-md ${scrolled ? 'py-0' : 'py-2'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center h-16 lg:h-20">
         <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center group">
-          <div className={`${scrolled || location.pathname !== '/' ? 'w-28 h-12' : 'w-36 h-16'} overflow-hidden flex items-center justify-start transition-all duration-500 group-hover:scale-105`}>
+          <div className={`${scrolled ? 'w-28 h-12' : 'w-36 h-16'} overflow-hidden flex items-center justify-start transition-all duration-500 group-hover:scale-105`}>
             <img src="/logo/Logo_Alltagsbetreuung.png" alt="Alltagsbetreuung Giò Logo" className="w-full h-full object-contain object-left" />
           </div>
         </Link>
