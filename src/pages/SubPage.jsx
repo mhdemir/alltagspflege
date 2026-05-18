@@ -1,85 +1,35 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ShieldCheck, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { CheckCircle2 } from 'lucide-react';
 
-const SubPage = ({ title, subtitle, description, highlights, additionalContent, image }) => {
+const SubPage = ({ title, subtitle, description, highlights, image }) => {
   return (
-    <div className="bg-white text-[#2D2E28]">
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-16 lg:pt-48 lg:pb-32 bg-[#F3EFD2]">
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex-1 text-center lg:text-left"
-            >
-              <h1 className="text-4xl lg:text-6xl font-black mb-6 leading-tight">{title}</h1>
-              <p className="text-xl text-[#2D2E28]/80 font-medium max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                {subtitle}
-              </p>
-            </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="flex-1 w-full max-w-md"
-            >
-              <div className="rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white aspect-[4/3]">
-                <img src={image || "/images/gio1.jpeg"} alt={title} className="w-full h-full object-cover" />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent" />
-      </section>
-
-      {/* Content Section */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="prose prose-lg max-w-none text-[#2D2E28]">
-            <div className="mb-12 text-lg leading-relaxed font-medium space-y-6">
-              {description.split('\n').map((para, i) => para.trim() && <p key={i}>{para}</p>)}
-            </div>
-
-            {highlights && highlights.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-                {highlights.map((item, i) => (
-                  <div key={i} className="flex items-start gap-4 p-5 bg-[#F3EFD2]/50 rounded-2xl border-2 border-transparent hover:border-[#84A07F] transition-all group">
-                    <div className="p-1 bg-[#84A07F] rounded-lg text-white group-hover:scale-110 transition-transform flex-shrink-0">
-                      <CheckCircle2 size={20} />
+    <div className="pt-32">
+      <section className="py-20 lg:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
+            <div className="flex-1">
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+                <h2 className="text-[#84A07F] font-black uppercase tracking-widest text-sm mb-4">{subtitle}</h2>
+                <h1 className="text-4xl lg:text-7xl font-black text-[#2D2E28] mb-8 leading-[1.1]">{title}</h1>
+                <div className="prose prose-xl text-[#2D2E28]/80 font-medium leading-relaxed mb-12 whitespace-pre-line">
+                  {description}
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {highlights.map((item, i) => (
+                    <div key={i} className="flex items-center gap-4 p-4 bg-[#FDFCF5] rounded-2xl border border-[#F3EFD2]">
+                      <div className="text-[#84A07F]"><CheckCircle2 size={24} /></div>
+                      <span className="font-bold text-[#2D2E28]">{item}</span>
                     </div>
-                    <span className="font-bold">{item}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {additionalContent && (
-              <div className="mt-12 space-y-8">
-                {additionalContent}
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Info Banner */}
-      <section className="bg-[#84A07F] py-12 mb-16">
-        <div className="max-w-4xl mx-auto px-6 text-center text-white">
-          <div className="flex justify-center mb-6">
-            <div className="p-4 bg-white/20 rounded-2xl">
-              <ShieldCheck size={40} />
+                  ))}
+                </div>
+              </motion.div>
             </div>
-          </div>
-          <h2 className="text-2xl lg:text-3xl font-black mb-4">Wussten Sie schon?</h2>
-          <p className="text-lg font-medium mb-8 opacity-90">
-            Bereits ab Pflegegrad 1 können viele unserer Unterstützungen für Sie kostenlos sein, da die Kosten häufig über den Entlastungsbetrag der Pflegekasse übernommen werden.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/#kontakt" className="bg-[#2D2E28] text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-[#2D2E28] transition-all">
-              Jetzt persönlich beraten lassen
-            </Link>
+            <div className="flex-1 w-full sticky top-32">
+              <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }} className="rounded-[4rem] overflow-hidden shadow-2xl border-[12px] border-[#FDFCF5]">
+                <img src={image} alt={title} className="w-full aspect-[4/5] object-cover" />
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>

@@ -36,17 +36,6 @@ const Footer = () => {
         </div>
         
         <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 mb-8">
-          <div className="grid grid-cols-2 md:flex md:flex-row gap-6 md:gap-8 w-full justify-items-center md:justify-center">
-            {navLinks.map(link => (
-              <button 
-                key={link.id} 
-                onClick={() => scrollTo(link.id)}
-                className="font-black text-[#2D2E28]/40 hover:text-[#84A07F] transition-colors uppercase tracking-[0.2em] text-[10px]"
-              >
-                {link.name}
-              </button>
-            ))}
-          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 text-left border-b border-[#F3EFD2] pb-12">
@@ -83,6 +72,13 @@ const Footer = () => {
         </div>
 
         <div className="w-16 h-1 bg-[#F3EFD2] mx-auto mb-8" />
+        
+        <p className="text-[#2D2E28]/40 text-[10px] font-bold uppercase tracking-widest max-w-2xl mx-auto mb-4 leading-relaxed">
+          Hinweis zur Privatsphäre: Einige Fotos auf dieser Webseite wurden mit KI-Unterstützung aufbereitet. 
+          Dadurch respektieren und schützen wir die Privatsphäre unserer Patient:innen, während wir gleichzeitig 
+          einen authentischen Einblick in unsere Arbeit geben.
+        </p>
+
         <p className="text-[#2D2E28]/30 font-bold uppercase tracking-widest text-[10px] px-4">
           © {new Date().getFullYear()} Alltagsbetreuung Giò | Bochum | Alle Rechte vorbehalten
         </p>

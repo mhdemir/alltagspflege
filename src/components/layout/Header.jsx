@@ -35,8 +35,9 @@ const Header = () => {
   const navLinks = [
     { name: 'Start', id: 'hero', type: 'scroll' },
     { name: 'Leistungen', id: 'leistungen', type: 'scroll' },
+    { name: 'Informationen', id: 'informationen', type: 'scroll' },
     { name: 'Über Mich', path: '/giuseppina-giardina', type: 'link' },
-    { name: 'Kontakt', id: 'kontakt', type: 'scroll' },
+    { name: 'Kontakt', path: '/kontakt', type: 'link' },
   ];
 
   return (
@@ -49,7 +50,7 @@ const Header = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             link.type === 'scroll' ? (
               <button 
@@ -71,12 +72,21 @@ const Header = () => {
               </Link>
             )
           ))}
-          <a 
-            href="tel:023435776700" 
-            className="bg-[#84A07F] text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-lg hover:bg-[#2D2E28] transition-all"
-          >
-            0234 357 767 00
-          </a>
+          <div className="flex items-center gap-3 ml-4">
+            <Link 
+              to="/kontakt" 
+              className="hidden lg:flex bg-[#F3EFD2] text-[#2D2E28] px-5 py-2.5 rounded-full font-bold text-sm hover:bg-[#84A07F] hover:text-white transition-all"
+            >
+              Kostenlose Beratung
+            </Link>
+            <a 
+              href="tel:023435776700" 
+              className="flex items-center gap-2 bg-[#84A07F] text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-lg hover:bg-[#2D2E28] transition-all"
+            >
+              <Phone size={16} />
+              Jetzt anrufen
+            </a>
+          </div>
         </div>
 
         {/* Mobile Actions */}

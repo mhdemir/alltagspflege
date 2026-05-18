@@ -1,359 +1,320 @@
-import React, { useEffect } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  CheckCircle2,
-  Brain, 
-  Users, 
-  Phone, 
-  Mail, 
-  MapPin,
-  ShieldCheck,
-  ArrowRight
-} from 'lucide-react';
+import { ShieldCheck, Clock, MapPin, Coffee, ShoppingCart, Brain, Sparkles, ArrowRight, Users, Info, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.state && location.state.scrollTo) {
-      const id = location.state.scrollTo;
-      const element = document.getElementById(id);
-      if (element) {
-        const offset = 90;
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - offset;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-      // Clear state to prevent scrolling on refresh
-      window.history.replaceState({}, document.title);
-    } else {
-      window.scrollTo(0, 0);
+  const previewServices = [
+    {
+      title: "Alltagsbegleitung",
+      description: "Gemeinsam statt einsam. Wir begleiten Sie im Alltag, damit Sie sicher und aktiv bleiben.",
+      image: "/images/gio6.jpeg",
+      link: "/begleitung-alltag-termine-bochum",
+      icon: <Users size={24} />,
+      color: "bg-blue-50"
+    },
+    {
+      title: "Haushaltshilfe",
+      description: "Ein sauberes Zuhause zum Wohlfühlen. Wir unterstützen Sie tatkräftig im Haushalt und beim Einkauf.",
+      image: "/images/gio5.jpeg",
+      link: "/haushaltshilfe-bochum",
+      icon: <ShoppingCart size={24} />,
+      color: "bg-green-50"
+    },
+    {
+      title: "Demenzbetreuung",
+      description: "Sicherheit und Struktur. Mit viel Herz fördern wir vorhandene Fähigkeiten und entlasten Angehörige.",
+      image: "/images/gio7.jpeg",
+      link: "/demenzbetreuung-bochum",
+      icon: <Brain size={24} />,
+      color: "bg-amber-50"
+    },
+    {
+      title: "Freizeit & Ausflüge",
+      description: "Gemeinsam die Welt entdecken. Wir motivieren zu Spaziergängen und begleiten Sie bei Ausflügen.",
+      image: "/images/gio1.jpeg",
+      link: "/freizeitgestaltung-ausfluege-bochum",
+      icon: <MapPin size={24} />,
+      color: "bg-rose-50"
+    },
+    {
+      title: "Gesellschaft & Gespräche",
+      description: "Zeit schenken und zuhören. Weil manchmal die kleinen Momente den größten Unterschied machen.",
+      image: "/images/gio3.jpeg",
+      link: "/gesellschaft-gespraeche-bochum",
+      icon: <Coffee size={24} />,
+      color: "bg-purple-50"
+    },
+    {
+      title: "Arzt & Behörden",
+      description: "Zuverlässige Begleitung zu wichtigen Terminen. Wir geben Sicherheit und entlasten Ihre Familie.",
+      image: "/images/gio2.jpeg",
+      link: "/arztbesuche-behoerdengaenge-bochum",
+      icon: <Clock size={24} />,
+      color: "bg-cyan-50"
     }
-  }, [location]);
-
-  const leistungen = [
-    { name: "Begleitung im Alltag und zu Terminen", path: "/begleitung-alltag-termine-bochum" },
-    { name: "Hilfe im Haushalt und beim Einkaufen", path: "/haushaltshilfe-bochum" },
-    { name: "Freizeitgestaltung und Ausflüge", path: "/freizeitgestaltung-ausfluege-bochum" },
-    { name: "Gesellschaft und Gespräche", path: "/gesellschaft-gespraeche-bochum" },
-    { name: "Hilfe bei Demenz", path: "/demenzbetreuung-bochum" },
-    { name: "Arztbesuche, Apotheken- und Behördengänge", path: "/arztbesuche-behoerdengaenge-bochum" },
-    { name: "Entlastung für pflegende Angehörige", path: "/verhinderungspflege-bochum" }
   ];
 
-  const scrollTo = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 90;
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+  const infoServices = [
+    {
+      title: "Betreuung mit Pflegegrad",
+      description: "Nutzen Sie die Unterstützung, die Ihnen zusteht. Wir beraten Sie persönlich zu Ihren Ansprüchen.",
+      image: "/images/gio8.jpeg",
+      link: "/betreuung-pflegegrad-bochum",
+      icon: <ShieldCheck size={24} />,
+      color: "bg-emerald-50"
+    },
+    {
+      title: "Entlastungsbetrag",
+      description: "125 € monatlich für Ihre Unterstützung. Wir helfen Ihnen, diesen Betrag sinnvoll einzusetzen.",
+      image: "/images/gio9.jpeg",
+      link: "/entlastungsbetrag-bochum",
+      icon: <Sparkles size={24} />,
+      color: "bg-blue-50"
+    },
+    {
+      title: "Verhinderungspflege",
+      description: "Eine Auszeit für pflegende Angehörige. Kraft tanken, während wir zuverlässig für Ihre Liebsten da sind.",
+      image: "/images/gio10.jpeg",
+      link: "/verhinderungspflege-bochum",
+      icon: <Heart size={24} />,
+      color: "bg-rose-50"
     }
-  };
+  ];
 
   return (
-    <div className="bg-[#F3EFD2] text-[#2D2E28]">
-      
-      {/* --- HERO SEKTION --- */}
-      <section 
-        id="hero" 
-        className="relative pt-32 pb-12 lg:pt-36 lg:pb-28 overflow-hidden"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="w-full lg:max-w-2xl text-center lg:text-left z-20"
-            >
-              <h2 className="text-[#84A07F] font-black uppercase tracking-[0.4em] mb-4 text-[10px] sm:text-xs md:text-sm">Alltagsbetreuung</h2>
-              <h1 className="text-[clamp(2rem,11vw,3.5rem)] leading-[1.1] sm:text-6xl lg:text-7xl font-black mb-6 text-[#2D2E28] break-words hyphens-auto text-center lg:text-left">
-                Mehr Zeit.<br />Mehr Ruhe.<br />
-                <span className="text-[#84A07F]">Lebensqualität.</span>
-              </h1>
-              <p className="text-base sm:text-xl text-[#2D2E28]/80 mb-8 mx-auto lg:mx-0 max-w-lg leading-relaxed font-medium px-2 sm:px-0 text-center lg:text-left">
-                Herzliche Unterstützung für ein selbstbestimmtes Leben in Bochum. Wir sind da, wenn Sie uns brauchen.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
-                <button 
-                  onClick={() => scrollTo('kontakt')}
-                  className="w-full sm:w-auto bg-[#2D2E28] text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:bg-[#84A07F] transition-all transform hover:-translate-y-1 active:scale-95"
-                >
-                  Kostenfreie Erstberatung
-                </button>
-                <button 
-                  onClick={() => scrollTo('leistungen')}
-                  className="w-full sm:w-auto bg-white border-2 border-[#2D2E28] text-[#2D2E28] px-8 py-4 rounded-xl font-bold hover:bg-[#F3EFD2] transition-all active:scale-95"
-                >
-                  Leistungen entdecken
-                </button>
-              </div>
-
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="mt-8 flex items-center gap-4 justify-center lg:justify-start"
-              >
-                <span className="text-[10px] font-black text-[#2D2E28]/60 uppercase tracking-widest">Mehr über uns:</span>
-                <a 
-                  href="https://www.facebook.com/share/1EQXG1kvDU/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-[#84A07F] font-bold hover:text-[#2D2E28] transition-colors group"
-                >
-                  <div className="w-8 h-8 bg-[#84A07F]/10 rounded-full flex items-center justify-center group-hover:bg-[#84A07F] group-hover:text-white transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                    </svg>
-                  </div>
-                  <span className="text-sm">Facebook</span>
-                </a>
-              </motion.div>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="mt-12 w-full lg:hidden z-10"
-            >
-              <div className="relative">
-                <div className="rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/5]">
-                  <img src="/images/gio1.jpeg" alt="Alltagsbetreuung" className="w-full h-full object-cover" />
-                </div>
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#84A07F] rounded-full blur-[50px] opacity-20 -z-10" />
-              </div>
-            </motion.div>
-          </div>
+    <>
+      {/* --- HERO SEKTION MIT VIDEO --- */}
+      <section id="hero" className="relative h-screen flex items-center overflow-hidden bg-black">
+        <div className="absolute inset-0 z-0">
+          <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60">
+            <source src="/videos/V1.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
         </div>
-
-        <div className="hidden lg:block absolute inset-0 z-0">
-          <div 
-            className="absolute inset-0 bg-[url('/images/gio1.jpeg')] bg-no-repeat bg-right bg-contain"
-            style={{
-              maskImage: 'linear-gradient(to right, transparent, black 55%)',
-              WebkitMaskImage: 'linear-gradient(to right, transparent, black 55%)',
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F3EFD2] via-[#F3EFD2]/20 to-transparent" />
-        </div>
-      </section>
-
-      {/* --- FLYER INFO BANNER --- */}
-      <section className="bg-[#84A07F] py-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 text-white">
-            <div className="flex items-center gap-5">
-              <div className="p-3 bg-white/20 rounded-2xl shadow-inner">
-                <ShieldCheck size={32} />
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+          <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="max-w-3xl text-left">
+            <h2 className="text-[#84A07F] font-black uppercase tracking-[0.4em] mb-4 text-sm md:text-base">Alltagsbetreuung Giò</h2>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-8 text-white">
+              Mehr Zeit.<br /><span className="text-[#84A07F]">Mehr Lebensqualität.</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-xl leading-relaxed font-medium">
+              Herzliche Unterstützung für ein selbstbestimmtes Leben in Bochum. Wir sind da, wenn Sie uns brauchen.
+            </p>
+            
+            <div className="flex items-center gap-3 mb-8">
+              <div className="bg-[#84A07F]/20 border border-[#84A07F]/50 backdrop-blur-sm text-[#F3EFD2] px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2">
+                <ShieldCheck size={16} />
+                Ab Pflegegrad 1 kostenlos
               </div>
-              <div>
-                <p className="text-xl lg:text-2xl font-black text-center lg:text-left">Ab Pflegegrad 1 kostenlos!</p>
-                <p className="text-sm font-bold opacity-90 text-[#F3EFD2] text-center lg:text-left">Wir rechnen direkt mit der Pflegekasse ab.</p>
+              <div className="hidden sm:flex bg-white/10 border border-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-bold items-center gap-2">
+                Pflegekasse übernimmt Kosten
               </div>
             </div>
-            <div className="h-px w-full lg:w-px lg:h-16 bg-white/20" />
-            <div className="text-center lg:text-right">
-              <p className="text-xs font-black uppercase tracking-widest mb-1 opacity-80">Rufen Sie uns an</p>
-              <a href="tel:023435776700" className="text-2xl lg:text-4xl font-black hover:text-[#2D2E28] transition-colors">
-                0234 357 767 00
+
+            <div className="flex flex-col sm:flex-row gap-5">
+              <Link to="/kontakt" className="bg-[#84A07F] text-white px-10 py-5 rounded-2xl font-black shadow-2xl hover:bg-white hover:text-[#84A07F] transition-all transform hover:-translate-y-1 text-lg text-center flex items-center justify-center gap-2">
+                Kostenlose Beratung
+                <ArrowRight size={20} />
+              </Link>
+              <a href="tel:023435776700" className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white px-10 py-5 rounded-2xl font-black hover:bg-white/20 transition-all text-lg text-center">
+                Jetzt anrufen
               </a>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- LEISTUNGEN --- */}
-      <section id="leistungen" className="py-16 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
-          <div className="flex-1 w-full">
-            <h2 className="text-3xl lg:text-5xl font-black mb-8 leading-tight text-[#2D2E28] text-center lg:text-left">
-              Wie wir Sie <br className="hidden lg:block" /><span className="text-[#84A07F]">begleiten.</span>
-            </h2>
-            <div className="grid grid-cols-1 gap-4">
-              {leistungen.map((item, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Link 
-                    to={item.path}
-                    className="flex items-center justify-between gap-4 p-4 bg-[#F3EFD2]/30 rounded-2xl hover:bg-[#F3EFD2] transition-all group"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="p-1.5 bg-[#84A07F] rounded-lg text-white group-hover:scale-110 transition-transform flex-shrink-0">
-                        <CheckCircle2 size={18} />
-                      </div>
-                      <span className="text-lg font-bold text-[#2D2E28]">{item.name}</span>
-                    </div>
-                    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-[#84A07F] opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1">
-                      <ArrowRight size={16} />
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="flex-1 relative w-full"
-          >
-            <div className="rounded-[3rem] overflow-hidden shadow-2xl border-[10px] border-[#F3EFD2] aspect-square relative z-10 mx-auto max-w-[500px]">
-              <img src="/images/gio5.jpeg" alt="Alltagsbegleitung" className="w-full h-full object-cover" />
-            </div>
-            <div className="absolute -top-10 -right-10 w-48 h-48 bg-[#AEA880] rounded-full blur-[60px] opacity-20" />
           </motion.div>
         </div>
       </section>
 
-      {/* --- SCHWERPUNKTE --- */}
-      <section id="schwerpunkte" className="py-16 lg:py-28 bg-[#F3EFD2]/50">
+      {/* --- INFO BANNER --- */}
+      <section className="bg-white py-12 border-b border-[#F3EFD2]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-5xl font-black mb-4 uppercase tracking-tighter text-[#2D2E28]">Unsere Schwerpunkte</h2>
-            <div className="w-24 h-1.5 bg-[#84A07F] mx-auto rounded-full" />
-          </div>
-
-          <div className="space-y-20">
-            {/* Demenz */}
-            <div className="flex flex-col lg:flex-row items-center gap-12">
-              <div className="flex-1 order-2 lg:order-1 text-center lg:text-left w-full">
-                <div className="flex flex-col lg:flex-row items-center gap-4 mb-5">
-                  <div className="p-3 bg-[#84A07F] rounded-2xl text-white shadow-lg">
-                    <Brain size={28} />
-                  </div>
-                  <h3 className="text-2xl lg:text-3xl font-black text-[#2D2E28]">Demenzbetreuung mit Herz</h3>
-                </div>
-                <p className="text-lg leading-relaxed font-medium mb-6 text-[#2D2E28]">
-                  Wir schaffen eine sichere und vertraute Umgebung, in der sich Menschen mit Demenz wohlfühlen. Mit Gedächtnistraining, Biografiearbeit und viel Geduld fördern wir den Erhalt vorhandener Fähigkeiten.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[#2D2E28] text-left mb-8">
-                  {["Gedächtnistraining", "Musik & Gesang", "Kreatives Gestalten", "Gezielte Aktivierung"].map((t, i) => (
-                    <div key={i} className="flex items-center gap-2.5 font-bold text-sm">
-                      <div className="w-1.5 h-1.5 bg-[#84A07F] rounded-full" /> {t}
-                    </div>
-                  ))}
-                </div>
-                <Link to="/demenzbetreuung-bochum" className="inline-flex items-center gap-2 text-[#84A07F] font-black uppercase tracking-widest text-xs hover:text-[#2D2E28] transition-colors group">
-                  Mehr zur Demenzbetreuung <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-              <div className="flex-1 order-1 lg:order-2 w-full">
-                <img src="/images/gio4.jpeg" alt="Demenzbetreuung" className="rounded-[2.5rem] shadow-xl border-6 border-white w-full h-[320px] object-cover mx-auto" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-[#2D2E28]">
+            <div className="flex items-center gap-4">
+              <div className="p-4 bg-[#84A07F]/10 rounded-2xl text-[#84A07F]"><ShieldCheck size={32} /></div>
+              <div>
+                <p className="font-black text-lg">Kostenlos ab Pflegegrad 1</p>
+                <p className="text-sm font-medium opacity-70 italic">Direkte Abrechnung mit der Kasse</p>
               </div>
             </div>
-
-            {/* Aktivierung */}
-            <div className="flex flex-col lg:flex-row-reverse items-center gap-12">
-              <div className="flex-1 text-[#2D2E28] text-center lg:text-left w-full">
-                <div className="flex flex-col lg:flex-row items-center gap-4 mb-5">
-                  <div className="p-3 bg-[#2D2E28] rounded-2xl text-white shadow-lg">
-                    <Users size={28} />
-                  </div>
-                  <h3 className="text-2xl lg:text-3xl font-black">Betreuung & Aktivierung</h3>
-                </div>
-                <p className="text-lg leading-relaxed font-medium mb-6">
-                  Lebensfreude ist keine Frage des Alters. Wir bringen Abwechslung in den Alltag – von gemeinsamen Spaziergängen bis hin zur Begleitung zu Ihren Lieblingsorten.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[#2D2E28] text-left mb-8">
-                  {["Spaziergänge", "Behördengänge", "Haushaltshilfe", "Entlastung Angehöriger"].map((t, i) => (
-                    <div key={i} className="flex items-center gap-2.5 font-bold text-sm">
-                      <div className="w-1.5 h-1.5 bg-[#AEA880] rounded-full" /> {t}
-                    </div>
-                  ))}
-                </div>
-                <Link to="/freizeitgestaltung-ausfluege-bochum" className="inline-flex items-center gap-2 text-[#2D2E28] font-black uppercase tracking-widest text-xs hover:text-[#84A07F] transition-colors group">
-                  Mehr zur Aktivierung <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
+            <div className="flex items-center gap-4">
+              <div className="p-4 bg-[#84A07F]/10 rounded-2xl text-[#84A07F]"><Clock size={32} /></div>
+              <div>
+                <p className="font-black text-lg">Individuelle Zeiten</p>
+                <p className="text-sm font-medium opacity-70 italic">Wir richten uns nach Ihrem Alltag</p>
               </div>
-              <div className="flex-1 w-full">
-                <img src="/images/gio2.jpeg" alt="Aktivierung" className="rounded-[2.5rem] shadow-xl border-6 border-white w-full h-[320px] object-cover mx-auto" />
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="p-4 bg-[#84A07F]/10 rounded-2xl text-[#84A07F]"><MapPin size={32} /></div>
+              <div>
+                <p className="font-black text-lg">Einsatzort Bochum</p>
+                <p className="text-sm font-medium opacity-70 italic">& gesamte Umgebung</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- KONTAKT --- */}
-      <section 
-        id="kontakt" 
-        className="py-16 lg:py-28 relative bg-[url('/images/gio3.jpeg')] bg-cover bg-center"
-      >
-        <div className="absolute inset-0 bg-[#2D2E28]/80 z-0" />
-        
+      {/* --- LEISTUNGEN SEKTION --- */}
+      <section id="leistungen" className="relative py-24 lg:py-40 overflow-hidden">
+        {/* Video Background for Services Section */}
+        <div className="absolute inset-0 z-0">
+          <video autoPlay loop muted playsInline className="w-full h-full object-cover grayscale opacity-20">
+            <source src="/videos/V2.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-[#FDFCF5]/90 backdrop-blur-sm" />
+        </div>
+
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row relative">
-            <div className="flex-1 p-10 lg:p-16 text-white text-center lg:text-left">
-              <h2 className="text-3xl lg:text-5xl font-black mb-8 leading-[0.9]">Starten wir <br className="hidden lg:block" />gemeinsam.</h2>
-              <p className="text-lg opacity-80 mb-10 font-medium">
-                Wir beraten Sie umfassend und helfen Ihnen bei der Abrechnung mit der Pflegekasse. Rufen Sie uns an oder schreiben Sie uns.
-              </p>
-              
-              <div className="space-y-6 max-w-md mx-auto lg:mx-0">
-                <a href="tel:023435776700" className="flex items-center gap-5 group text-left">
-                  <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-[#84A07F] transition-all flex-shrink-0"><Phone size={24} /></div>
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-widest opacity-50">Beratungstelefon</p>
-                    <p className="text-xl lg:text-2xl font-black">0234 357 767 00</p>
-                  </div>
-                </a>
-                <a href="mailto:Info@giohilft.com" className="flex items-center gap-5 group text-left">
-                  <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center group-hover:bg-[#84A07F] transition-all flex-shrink-0"><Mail size={24} /></div>
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-widest opacity-50">E-Mail Adresse</p>
-                    <p className="text-xl lg:text-2xl font-black underline decoration-[#84A07F] break-all">Info@giohilft.com</p>
-                  </div>
-                </a>
-                <div className="flex items-center gap-5 text-left">
-                  <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center flex-shrink-0"><MapPin size={24} /></div>
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-widest opacity-50">Standort</p>
-                    <p className="text-xl lg:text-2xl font-black">Bochum & Umgebung</p>
-                  </div>
-                </div>
-              </div>
+          <div className="flex flex-col lg:flex-row justify-between items-end gap-8 mb-20">
+            <div className="max-w-2xl">
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-[#84A07F] font-black uppercase tracking-widest text-sm mb-4"
+              >
+                Unsere Unterstützung
+              </motion.h2>
+              <motion.h3 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-4xl lg:text-6xl font-black text-[#2D2E28] leading-[1.1]"
+              >
+                Mitten im Leben, <br />
+                <span className="text-[#84A07F]">Seite an Seite.</span>
+              </motion.h3>
             </div>
+            <motion.p 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="max-w-md text-lg text-[#2D2E28]/70 font-medium pb-2"
+            >
+              Wir glauben, dass jeder Mensch ein würdevolles und freudiges Leben in den eigenen vier Wänden verdient. 
+              Entdecken Sie unsere vielfältigen Leistungen.
+            </motion.p>
+          </div>
 
-            <div className="flex-1 bg-white/95 p-10 lg:p-16 backdrop-blur-sm">
-              <form className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-1.5 text-[#2D2E28]">
-                    <label className="text-[10px] font-black uppercase tracking-widest ml-1">Name</label>
-                    <input type="text" className="w-full p-4 bg-[#F3EFD2]/40 rounded-xl border-2 border-transparent focus:border-[#84A07F] outline-none transition-all font-bold text-sm" placeholder="Ihr Name" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+            {previewServices.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group relative"
+              >
+                <Link to={service.link} className="block">
+                  <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden mb-8 shadow-2xl transition-transform duration-700 group-hover:scale-[0.98]">
+                    <img 
+                      src={service.image} 
+                      alt={service.title} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute bottom-8 left-8 right-8 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                      <div className="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-4 text-white flex items-center justify-between">
+                        <span className="font-black uppercase tracking-widest text-xs">Details ansehen</span>
+                        <ArrowRight size={20} />
+                      </div>
+                    </div>
                   </div>
-                  <div className="space-y-1.5 text-[#2D2E28]">
-                    <label className="text-[10px] font-black uppercase tracking-widest ml-1">E-Mail</label>
-                    <input type="email" className="w-full p-4 bg-[#F3EFD2]/40 rounded-xl border-2 border-transparent focus:border-[#84A07F] outline-none transition-all font-bold text-sm" placeholder="mail@beispiel.de" />
+                  
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className={`p-3 rounded-2xl bg-white text-[#84A07F] shadow-sm group-hover:bg-[#84A07F] group-hover:text-white transition-colors duration-300`}>
+                      {service.icon}
+                    </div>
+                    <div>
+                      <h4 className="text-2xl font-black text-[#2D2E28] mb-2 group-hover:text-[#84A07F] transition-colors">{service.title}</h4>
+                      <p className="text-[#2D2E28]/70 font-medium leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="space-y-1.5 text-[#2D2E28]">
-                  <label className="text-[10px] font-black uppercase tracking-widest ml-1">Ihre Nachricht</label>
-                  <textarea rows="4" className="w-full p-4 bg-[#F3EFD2]/40 rounded-xl border-2 border-transparent focus:border-[#84A07F] outline-none transition-all font-bold text-sm resize-none" placeholder="Wie können wir Ihnen helfen?"></textarea>
-                </div>
-                <button className="w-full bg-[#84A07F] text-white py-4.5 rounded-xl font-black text-lg shadow-xl hover:bg-[#2D2E28] transition-all transform active:scale-95">
-                  Anfrage absenden
-                </button>
-              </form>
-            </div>
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
-    </div>
+
+      {/* --- INFORMATIONEN SEKTION --- */}
+      <section id="informationen" className="py-24 lg:py-40 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col lg:flex-row justify-between items-end gap-8 mb-20">
+            <div className="max-w-2xl">
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-[#84A07F] font-black uppercase tracking-widest text-sm mb-4"
+              >
+                Wissenswertes
+              </motion.h2>
+              <motion.h3 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-4xl lg:text-6xl font-black text-[#2D2E28] leading-[1.1]"
+              >
+                Gut informiert <br />
+                <span className="text-[#84A07F]">bestens betreut.</span>
+              </motion.h3>
+            </div>
+            <motion.p 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="max-w-md text-lg text-[#2D2E28]/70 font-medium pb-2"
+            >
+              Erfahren Sie mehr über Ihre Ansprüche, Kostenübernahmen und wie wir Sie und Ihre Angehörigen entlasten können.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+            {infoServices.map((info, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group"
+              >
+                <Link to={info.link} className="block">
+                  <div className="relative aspect-video rounded-[2.5rem] overflow-hidden mb-8 shadow-xl transition-transform duration-700 group-hover:scale-[0.98]">
+                    <img 
+                      src={info.image} 
+                      alt={info.title} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+                  </div>
+                  
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className={`p-3 rounded-2xl bg-[#FDFCF5] text-[#84A07F] border border-[#F3EFD2] group-hover:bg-[#84A07F] group-hover:text-white transition-colors duration-300`}>
+                      {info.icon}
+                    </div>
+                    <div>
+                      <h4 className="text-2xl font-black text-[#2D2E28] mb-2 group-hover:text-[#84A07F] transition-colors">{info.title}</h4>
+                      <p className="text-[#2D2E28]/70 font-medium leading-relaxed">
+                        {info.description}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 

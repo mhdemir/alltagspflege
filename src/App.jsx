@@ -4,9 +4,9 @@ import ScrollToTop from './components/ScrollToTop';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
-import AboutMe from './pages/AboutMe';
-import Impressum from './pages/Impressum';
-import Datenschutz from './pages/Datenschutz';
+import AboutMe from './pages/About';
+import Contact from './pages/Contact';
+import { Impressum, Datenschutz } from './pages/Legal';
 import SubPage from './pages/SubPage';
 import { pagesContent } from './data/pagesContent';
 
@@ -20,6 +20,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/giuseppina-giardina" element={<AboutMe />} />
+            <Route path="/kontakt" element={<Contact />} />
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/datenschutz" element={<Datenschutz />} />
             
