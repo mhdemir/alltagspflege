@@ -34,6 +34,8 @@ jobs:
           server: 571265428.swh.strato-hosting.eu
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: sftp
+          port: 22
           local-dir: ./dist/
           server-dir: ./
           dangerous-clean-slate: false
