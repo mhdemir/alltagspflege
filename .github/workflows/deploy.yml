@@ -3,25 +3,31 @@ name: Strato Deployment
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   web-deploy:
-    name: 🚀 Deploy Website to Strato
+    name: 🚀 Deploy Website to Strato via SFTP
     runs-on: ubuntu-latest
 
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
-      - name: 📂 Sync files to Strato
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      - name: 📂 Sync files to Strato (SFTP)
+        uses: BaseMax/GitHubAction-SFTP-Deploy-Password@main
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          host: 5020282487.ssh.w2.strato.hosting
+          port: 22
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 21
-          local-dir: ./
-          server-dir: /
-          security: loose
+          local_folder: .
+          remote_folder: /          
+          cleanup: false
+          include: |
+            *
+            **/*
+          exclude: |
+            .git/**
+            .github/**
+            node_modules/**
