@@ -1,37 +1,29 @@
 name: Strato SFTP Deployment
 
-# Der Prozess startet, sobald du Code auf den 'main' Branch pushst
 on:
   push:
     branches:
-      - main  # Prüfe in GitHub: Wenn dein Haupt-Branch 'master' heißt, schreibe hier 'master'
+      - main  # Prüfe, ob dein Haupt-Branch bei GitHub wirklich 'main' heißt
 
 jobs:
   web-deploy:
-    name: 🚀 Deploy to Strato via SFTP
+    name: 🚀 Deploy to Strato
     runs-on: ubuntu-latest
     steps:
     
-    # 1. Schritt: Aktuellen Code aus dem Repository holen
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
 
-    # 2. Schritt: Dateien per SFTP übertragen
     - name: 📂 Sync files to Strato
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        # Hier nutzen wir die Daten aus deinem Screenshot
+        # Wir nutzen jetzt genau die Daten, die in FileZilla funktioniert haben
         server: 5020282487.ssh.w2.strato.hosting
         username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
         port: 22
         protocol: sftp
         
-        # Lokaler Ordner ('.' bedeutet alles)
         local-dir: ./
-        
-        # Zielordner bei Strato ('/' ist das Hauptverzeichnis)
         server-dir: ./
-        
-        # Verhindert, dass Dateien gelöscht werden, die nur auf dem Server liegen
-        delete-clean: false
+        delete-clean: false # Setze auf 'true', wenn Dateien auf Strato gelöscht werden sollen, die nicht in GitHub sind
