@@ -3,39 +3,27 @@ name: Strato Deployment
 on:
   push:
     branches:
-      - master
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      - master  
 
 jobs:
   web-deploy:
     name: 🚀 Deploy Website to Strato
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v4
 
-      - name: 🛠️ Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          cache: 'npm'
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
 
-      - name: 📦 Install dependencies
-        run: npm ci
 
-      - name: 🏗️ Build project
-        run: npm run build
-
-      - name: 📂 Sync files to Strato
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: 571265428.swh.strato-hosting.eu
-          username: su98205
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: sftp
-          port: 22
-          local-dir: ./dist/
-          server-dir: ./
-          dangerous-clean-slate: false
+    - name: 📂 Sync files to Strato
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: 5020282487.ssh.w2.strato.hosting
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASSWORD }}
+      
+        local-dir: ./
+     
+        server-dir: ./
+        
+        delete-clean: false
