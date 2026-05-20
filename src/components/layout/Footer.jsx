@@ -75,8 +75,7 @@ const Footer = () => {
         
         <p className="text-[#2D2E28]/40 text-[10px] font-bold uppercase tracking-widest max-w-2xl mx-auto mb-4 leading-relaxed">
           Hinweis zur Privatsphäre: Einige Fotos auf dieser Webseite wurden mit KI-Unterstützung aufbereitet. 
-          Dadurch respektieren und schützen wir die Privatsphäre unserer Patient:innen, während wir gleichzeitig 
-          einen authentischen Einblick in unsere Arbeit geben.
+          Dadurch respektieren und schützen wir die Privatsphäre unserer Kund:innen, während wir gleichzeitig          einen authentischen Einblick in unsere Arbeit geben.
         </p>
 
         <p className="text-[#2D2E28]/30 font-bold uppercase tracking-widest text-[10px] px-4">

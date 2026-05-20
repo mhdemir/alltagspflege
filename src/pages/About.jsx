@@ -7,8 +7,8 @@ const About = () => {
     <div className="pt-32">
       <section className="py-20 lg:py-32 bg-[#FDFCF5]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-            <div className="flex-1 relative">
+          <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-24">
+            <div className="flex-1 relative lg:sticky lg:top-32">
               <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative z-10">
                 <div className="rounded-[4rem] overflow-hidden shadow-2xl border-[12px] border-white relative aspect-[4/5]">
                   <img src="/images/gio4.jpeg" alt="Giuseppina Giardina - Alltagsbetreuung Giò" className="w-full h-full object-cover" />
@@ -23,7 +23,7 @@ const About = () => {
                 Mein Name ist <span className="text-[#84A07F]">Giuseppina Giardina</span>. <br />Die meisten nennen mich liebevoll Giò.
               </h3>
               
-              <div className="prose prose-lg text-[#2D2E28]/80 font-medium leading-relaxed space-y-6">
+              <div className="prose prose-lg text-[#2D2E28]/80 font-medium leading-relaxed space-y-6 text-left">
                 <p>
                   Hinter Alltagsbetreuung Giò hilft steht nicht einfach nur ein Betreuungsdienst, sondern ein Mensch mit Herz, Lebenserfahrung und einer großen Leidenschaft dafür, anderen Menschen zu helfen.
                 </p>
@@ -46,16 +46,16 @@ const About = () => {
                   Mit Alltagsbetreuung Giò hilft möchte ich, Giuseppina Giardina, Menschen dabei unterstützen, weiterhin selbstständig, würdevoll und mit Lebensfreude in ihrem eigenen Zuhause leben zu können. Dabei ist mir besonders wichtig, jeden Menschen individuell zu sehen. Jeder Mensch hat seine eigene Geschichte, seine Gewohnheiten, Erinnerungen und Bedürfnisse. Genau darauf möchten wir eingehen.
                 </p>
                 <p>
-                  Meine italienischen Wurzeln prägen dabei auch meine Art mit Menschen umzugehen. Herzlichkeit, Familie, Respekt und das Gefühl, füreinander da zu sein, spielen für mich eine große Rolle. Viele unserer Kunden genießen genau diese familiäre und warme Atmosphäre.
+                  Meine italienischen Wurzeln prägen dabei auch meine Art mit Menschen umzugehen. Herzlichkeit, Familie, Respekt und das Gefühl, füreinander da zu sein, spielen für mich eine große Rolle. Viele unserer Kund:innen genießen genau diese familiäre und warme Atmosphäre.
                 </p>
                 <p>
-                  Besonders wichtig ist mir auch die Entlastung der Angehörigen. Ich weiß, wie belastend es sein kann, wenn man versucht, Familie, Arbeit und die Sorge um einen geliebten Menschen gleichzeitig zu bewältigen. Deshalb möchten wir nicht nur unsere Kunden begleiten, sondern auch Angehörigen das beruhigende Gefühl geben, nicht alleine zu sein.
+                  Besonders wichtig ist mir auch die Entlastung der Angehörigen. Ich weiß, wie belastend es sein kann, wenn man versucht, Familie, Arbeit und die Sorge um einen geliebten Menschen gleichzeitig zu bewältigen. Deshalb möchten wir nicht nur unsere Kund:innen begleiten, sondern auch Angehörigen das beruhigende Gefühl geben, nicht alleine zu sein.
                 </p>
                 <p className="font-bold text-xl italic text-[#84A07F] border-l-4 border-[#84A07F] pl-4">
                   "Alltagsbetreuung bedeutet für mich Vertrauen, Menschlichkeit und Nähe. Nicht nur helfen, sondern den Menschen das Gefühl geben, gesehen, verstanden und wertgeschätzt zu werden."
                 </p>
                 <p>
-                  Unsere Leistungen bieten wir in Bochum und Umgebung an. Bereits ab Pflegegrad 1 können viele unserer Unterstützungen für unsere Kunden kostenlos sein, da die Kosten häufig über den Entlastungsbetrag der Pflegekasse übernommen werden. Gerne beraten wir Sie persönlich und helfen Ihnen dabei, die für Sie passenden Möglichkeiten der Kostenübernahme zu verstehen und zu nutzen.
+                  Unsere Leistungen bieten wir in Bochum und Umgebung an. Bereits ab Pflegegrad 1 können viele unserer Unterstützungen für unsere Kund:innen kostenlos sein, da die Kosten häufig über den Entlastungsbetrag der Pflegekasse übernommen werden. Gerne beraten wir Sie persönlich und helfen Ihnen dabei, die für Sie passenden Möglichkeiten der Kostenübernahme zu verstehen und zu nutzen.
                 </p>
                 <p className="font-black text-xl text-[#2D2E28]">
                   Alltagsbetreuung Giò hilft<br/>
@@ -92,7 +92,7 @@ const About = () => {
               <div className="w-14 h-14 bg-[#84A07F] rounded-2xl flex items-center justify-center text-white mb-6"><Star size={28} /></div>
               <h4 className="text-2xl font-black text-[#2D2E28] mb-4">Fachliche Begleitung</h4>
               <p className="text-[#2D2E28]/80 font-medium leading-relaxed">
-                Fachlich begleitet und unterstützt werden wir durch das Regionalbüro Alter, Pflege und Demenz Ruhr. Die fachliche Begleitung hilft dabei, Qualität, Weiterbildung und eine professionelle Betreuung unserer Kunden sicherzustellen.
+                Fachlich begleitet und unterstützt werden wir durch das Regionalbüro Alter, Pflege und Demenz Ruhr. Die fachliche Begleitung hilft dabei, Qualität, Weiterbildung und eine professionelle Betreuung unserer Kund:innen sicherzustellen.
               </p>
             </motion.div>
 
