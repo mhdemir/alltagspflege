@@ -59,7 +59,7 @@ const Services = () => {
                 </div>
               </div>
               <div className="flex-1 order-1 lg:order-2">
-                <motion.img initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} src="/images/gio7.jpeg" alt="Demenzbetreuung" className="rounded-[4rem] shadow-2xl border-8 border-white w-full aspect-video object-cover" />
+                <motion.img initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} src="/images/gio4.jpeg" alt="Demenzbetreuung" className="rounded-[4rem] shadow-2xl border-8 border-white w-full aspect-video object-cover" />
               </div>
             </div>
           </div>

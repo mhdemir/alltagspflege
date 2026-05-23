@@ -24,7 +24,7 @@ const Home = () => {
     {
       title: "Demenzbetreuung",
       description: "Sicherheit und Struktur. Mit viel Herz fördern wir vorhandene Fähigkeiten und entlasten Angehörige.",
-      image: "/images/gio7.jpeg",
+      image: "/images/gio4.jpeg",
       link: "/demenzbetreuung-bochum",
       icon: <Brain size={24} />,
       color: "bg-amber-50"
@@ -66,7 +66,7 @@ const Home = () => {
     },
     {
       title: "Entlastungsbetrag",
-      description: "125 € monatlich für Ihre Unterstützung. Wir helfen Ihnen, diesen Betrag sinnvoll einzusetzen.",
+      description: "131 € monatlich für Ihre Unterstützung. Wir helfen Ihnen, diesen Betrag sinnvoll einzusetzen.",
       image: "/images/gio9.jpeg",
       link: "/entlastungsbetrag-bochum",
       icon: <Sparkles size={24} />,

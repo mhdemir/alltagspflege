@@ -31,13 +31,7 @@ const About = () => {
                   Schon immer stand für mich der Mensch im Mittelpunkt. Nach vielen Jahren Berufserfahrung in Deutschland, geprägt von engem Kontakt mit Menschen, Gastfreundschaft und Fürsorge, entstand mit der Zeit der Wunsch, etwas zu schaffen, das wirklich Sinn macht und Menschen im Alltag spürbar hilft.
                 </p>
                 <p>
-                  Die Liebe zu diesem Beruf entstand vor allem während meiner Arbeit als Pflegekraft. In dieser Zeit habe ich immer stärker gespürt, wie wichtig Zeit für Menschen eigentlich ist. Zeit zum Zuhören, Zeit für Gespräche, Zeit für ein Lächeln und manchmal einfach nur jemanden, der wirklich da ist.
-                </p>
-                <p>
-                  Oft hatte ich persönlich das Bedürfnis, mich mehr darauf zu konzentrieren, einem Menschen ein ehrliches Lachen zu schenken, ihm zuzuhören oder ihm das Gefühl zu geben, verstanden zu werden, statt mich ausschließlich um die pflegerischen Aufgaben kümmern zu müssen. Genau diese Erfahrungen haben meinen Wunsch wachsen lassen, Menschen anders begleiten zu wollen – menschlicher, persönlicher und mit mehr Ruhe.
-                </p>
-                <p>
-                  Gleichzeitig hat mir die Arbeit in der Pflege viele wichtige Erfahrungen und Kenntnisse vermittelt, die mir heute helfen, Menschen auf Augenhöhe zu begegnen, ihre Bedürfnisse besser zu verstehen und auch schwierige Situationen mit Ruhe, Verständnis und Respekt zu begleiten.
+                  Schon während meiner Tätigkeit in der Pflege wurde mir bewusst, wie wertvoll Zeit für Menschen ist. Gleichzeitig habe ich erlebt, dass im pflegerischen Alltag oft nur begrenzte Zeit für persönliche Zuwendung bleibt. Daraus entstand mein Wunsch, Menschen im Rahmen der Betreuung mehr Aufmerksamkeit, Ruhe und Lebensqualität schenken zu können. Für mich bedeutet es besonders viel, Menschen im Alltag zu entlasten, ihnen zuzuhören und ihnen einige unbeschwerte Stunden zu ermöglichen. Gleichzeitig haben mir meine Erfahrungen in der Pflege wichtige fachliche und menschliche Kompetenzen vermittelt, die meine Arbeit bis heute prägen.
                 </p>
                 <p>
                   Die Arbeit mit älteren Menschen und besonders mit Menschen mit Demenz hat mir gezeigt, wie wichtig Geduld, Verständnis und echte Menschlichkeit sind. Oft sind es nicht die großen Dinge, die den Unterschied machen, sondern kleine Gesten, Zuhören, gemeinsam lachen, Sicherheit geben oder einfach da zu sein.

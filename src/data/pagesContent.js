@@ -144,7 +144,7 @@ Weil Sie es uns wert sind.`,
       "Orientierungshilfen",
       "Entlastung für Angehörige"
     ],
-    image: "/images/gio7.jpeg"
+    image: "/images/gio4.jpeg"
   },
   pflegegrad: {
     title: "Betreuung mit Pflegegrad",
@@ -168,7 +168,7 @@ Wir unterstützen unsere Kund:innen und ihre Angehörigen dabei, die vorhandenen
   },
   entlastungsbetrag: {
     title: "Entlastungsbetrag §45b SGB XI",
-    subtitle: "125 € monatlich für Ihre Unterstützung – wir helfen Ihnen, diese sinnvoll einzusetzen.",
+    subtitle: "131 € monatlich für Ihre Unterstützung – wir helfen Ihnen, diese sinnvoll einzusetzen.",
     description: `Viele Menschen mit Pflegegrad haben Anspruch auf den sogenannten Entlastungsbetrag nach §45b SGB XI, wissen jedoch oft gar nicht genau, wofür dieser genutzt werden kann oder dass ihnen dieses Geld überhaupt zusteht.
 
 Bereits ab Pflegegrad 1 stellt die Pflegekasse monatlich einen Entlastungsbetrag zur Verfügung, der für Unterstützung im Alltag, Betreuung oder Begleitung genutzt werden kann. Dieser Betrag soll pflegebedürftigen Menschen und ihren Angehörigen helfen, den Alltag leichter zu bewältigen und Entlastung zu schaffen.
@@ -179,7 +179,7 @@ Genau deshalb möchten wir unsere Kund:innen dabei unterstützen, diese Möglich
 
 Ob Haushaltshilfe, Begleitung im Alltag, Betreuung oder Unterstützung bei Demenz – wir helfen dabei, die vorhandenen Leistungen der Pflegekasse bestmöglich einzusetzen.`,
     highlights: [
-      "125 € pro Monat",
+      "131 € pro Monat",
       "Ab Pflegegrad 1",
       "Verfall zum Juni verhindern",
       "Haushaltshilfe & Betreuung",
