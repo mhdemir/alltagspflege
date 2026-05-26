@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 const Gallery = () => {
   const galleryImages = [
+    { src: '/images/gio11.jpeg', alt: 'Alltagsbegleitung Moment' },
     { src: '/images/gio1.jpeg', alt: 'Alltagsbegleitung Moment' },
     { src: '/images/gio2.jpeg', alt: 'Gemeinsame Zeit' },
     { src: '/images/gio3.jpeg', alt: 'Unterstützung im Alltag' },
