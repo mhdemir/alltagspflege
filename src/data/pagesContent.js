@@ -19,7 +19,7 @@ Dadurch müssen Angehörige nicht immer einen freien Tag nehmen und unsere Kund:
       "Gesellschaft & Entlastung",
       "Sicherheit im Alltag"
     ],
-    image: "/images/gio6.jpeg" // Swapped with Freizeit
+    image: "/images/gio6.jpeg"
   },
   arztbesuche: {
     title: "Arztbesuche, Apotheken- und Behördengänge",
@@ -86,7 +86,7 @@ All diese kleinen Momente helfen unseren Kund:innen dabei, trotz ihrer gesundhei
       "Motivation & Begleitung",
       "Soziale Teilhabe bewahren"
     ],
-    image: "/images/gio1.jpeg" // Swapped with Begleitung
+    image: "/images/gio1.jpeg"
   },
   gesellschaft: {
     title: "Gesellschaft und Gespräche",

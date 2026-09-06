@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Clock, MapPin, Coffee, ShoppingCart, Brain, Sparkles, ArrowRight, Users, Info, Heart } from 'lucide-react';
+import { ShieldCheck, Clock, MapPin, Coffee, ShoppingCart, Brain, Sparkles, ArrowRight, Users, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import GoogleReviewsTicker from '../components/GoogleReviews/GoogleReviewsTicker';
 
 const Home = () => {
   const previewServices = [
@@ -84,23 +85,23 @@ const Home = () => {
 
   return (
     <>
-      {/* --- HERO SEKTION MIT VIDEO --- */}
-      <section id="hero" className="relative h-screen flex items-center overflow-hidden bg-black">
+      {/* --- HERO SEKTION MIT VIDEO & BEWERTUNGS-FLIESSBAND --- */}
+      <section id="hero" className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-black pt-28 sm:pt-36 pb-6">
         <div className="absolute inset-0 z-0">
           <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60">
             <source src="/videos/V1.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
         </div>
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full my-auto">
           <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="max-w-3xl text-left">
             <h2 className="text-[#84A07F] font-black uppercase tracking-[0.4em] mb-4 text-sm md:text-base">Alltagsbetreuung Giò</h2>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-8 text-white">
               Mehr Zeit.<br /><span className="text-[#84A07F]">Mehr Lebensqualität.</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-xl leading-relaxed font-medium">
+            <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-xl leading-relaxed font-medium">
               Herzliche Unterstützung für ein selbstbestimmtes Leben in Bochum. Wir sind da, wenn Sie uns brauchen.
             </p>
             
@@ -114,7 +115,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-5">
+            <div className="flex flex-col sm:flex-row gap-5 mb-8">
               <Link to="/kontakt" className="bg-[#84A07F] text-white px-10 py-5 rounded-2xl font-black shadow-2xl hover:bg-white hover:text-[#84A07F] transition-all transform hover:-translate-y-1 text-lg text-center flex items-center justify-center gap-2">
                 Kostenlose Beratung
                 <ArrowRight size={20} />
@@ -124,6 +125,11 @@ const Home = () => {
               </a>
             </div>
           </motion.div>
+        </div>
+
+        {/* Dynamisches Kundenbewertungs-Fließband im First View */}
+        <div className="relative z-20 w-full mt-4">
+          <GoogleReviewsTicker variant="dark" />
         </div>
       </section>
 
@@ -158,7 +164,6 @@ const Home = () => {
 
       {/* --- LEISTUNGEN SEKTION --- */}
       <section id="leistungen" className="relative py-24 lg:py-40 overflow-hidden">
-        {/* Video Background for Services Section */}
         <div className="absolute inset-0 z-0">
           <video autoPlay loop muted playsInline className="w-full h-full object-cover grayscale opacity-20">
             <source src="/videos/V2.mp4" type="video/mp4" />

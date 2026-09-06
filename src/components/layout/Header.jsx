@@ -122,7 +122,7 @@ const Header = () => {
                 ) : (
                   <Link 
                     key={link.path} 
-                    to={link.path}
+                    to={link.path} 
                     onClick={() => setIsMenuOpen(false)}
                     className="text-left text-lg font-bold border-b border-[#F3EFD2] pb-2 text-[#2D2E28]"
                   >
