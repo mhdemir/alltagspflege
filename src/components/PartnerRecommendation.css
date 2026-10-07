@@ -1,35 +1,48 @@
-.gio-partner-welcome {
-  overflow-x: clip;
-  padding: 96px 24px 20px;
-  background: #fdfbf5;
+.gio-partner-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 120px 24px 64px;
+  overflow: clip;
+  pointer-events: none;
 }
 
 .gio-partner-card {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 24px;
-  max-width: 1232px;
-  margin: 0 auto;
-  padding: 26px 30px;
-  border: 1px solid #e0ccb5;
+  position: relative;
+  flex: 0 1 348px;
+  max-width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 24px;
+  border: 1px solid #dcc3ad;
   border-radius: 26px;
-  background: linear-gradient(115deg, #f5e1ce, #fcf5e9 70%, #e9eddf);
+  background: linear-gradient(145deg, #f5e1ce, #fcf5e9 72%, #e9eddf);
   color: #42443a;
-  box-shadow: 0 5px 20px #654b3505;
+  box-shadow: 0 18px 60px #45322226, 0 3px 12px #4532220d;
+  pointer-events: auto;
 }
 
 .gio-partner-symbol {
   display: grid;
   place-items: center;
-  width: 62px;
-  height: 68px;
+  width: 46px;
+  height: 48px;
+  margin-bottom: 16px;
   border: 1px solid #d6b9a0;
-  border-radius: 30px 30px 20px 20px;
+  border-radius: 22px 22px 15px 15px;
   background: #fffcf77a;
   color: #925d41;
   transform: rotate(-5deg);
 }
+
+.gio-partner-close { position: absolute; top: 12px; right: 12px; display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid #ddcbb9; border-radius: 50%; background: #fffcf7b3; color: #625b4f; cursor: pointer; }
+.gio-partner-close:hover { background: #f1e6d8; color: #42443a; }
+.gio-partner-reopen { display: inline-flex; align-items: center; gap: 10px; max-width: 100%; min-height: 46px; padding: 12px 18px; border: 1px solid #dcc3ad; border-radius: 999px; color: #4b6348; background: #fcf3e8; box-shadow: 0 8px 30px #45322220; font-size: .875rem; font-weight: 650; cursor: pointer; pointer-events: auto; }
+.gio-partner-reopen[hidden], .gio-partner-card[hidden] { display: none; }
 
 .gio-partner-eyebrow {
   display: block;
@@ -41,10 +54,10 @@
   text-transform: uppercase;
 }
 
-.gio-partner-title { font-size: 1.4rem; font-weight: 600; line-height: 1.3; letter-spacing: -.025em; }
-.gio-partner-title strong { color: #755037; font-weight: 750; }
-.gio-partner-description { max-width: 650px; margin-top: 10px; color: #625b4f; font-size: .9375rem; line-height: 1.65; }
-.gio-partner-action { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.gio-partner-title { font-size: 1.25rem; font-weight: 600; line-height: 1.3; letter-spacing: -.025em; }
+.gio-partner-title strong { display: block; margin-bottom: 4px; color: #755037; font-size: 1.7rem; font-weight: 750; }
+.gio-partner-description { margin-top: 12px; color: #625b4f; font-size: .9375rem; line-height: 1.65; }
+.gio-partner-action { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 20px; }
 .gio-partner-action a {
   display: inline-flex;
   align-items: center;
@@ -75,32 +88,28 @@
 .gio-partner-contact-inner { display: flex; align-items: flex-start; gap: 22px; max-width: 850px; margin: 0 auto; color: #925d41; }
 .gio-partner-contact strong { color: #42443a; }
 .gio-partner-contact p + p { margin-top: 6px; }
-.gio-partner-welcome a:focus-visible, .gio-partner-story a:focus-visible, .gio-partner-contact a:focus-visible { outline: 3px solid #4b6348; outline-offset: 5px; }
+.gio-partner-overlay :is(a, button):focus-visible, .gio-partner-story a:focus-visible, .gio-partner-contact a:focus-visible { outline: 3px solid #4b6348; outline-offset: 5px; }
 
-@media (min-width: 1024px) { .gio-partner-welcome { padding-top: 112px; } }
-@media (max-width: 1100px) {
-  .gio-partner-card { grid-template-columns: minmax(0, 1fr) auto; padding: 24px; }
-  .gio-partner-symbol { display: none; }
-  .gio-partner-action { max-width: 260px; }
-}
 @media (max-width: 800px) {
-  .gio-partner-card, .gio-partner-story-inner { grid-template-columns: 1fr; gap: 20px; }
-  .gio-partner-action { align-items: flex-start; max-width: none; }
-  .gio-partner-action > span { display: none; }
+  .gio-partner-story-inner { grid-template-columns: 1fr; gap: 20px; }
   .gio-partner-story { padding: 48px 24px; }
 }
+@media (max-width: 767px) { body:has(nav[data-menu-open="true"]) .gio-partner-overlay { visibility: hidden; } }
 @media (max-width: 639px) {
-  .gio-partner-welcome { padding: 88px 20px 16px; }
-  .gio-partner-card { padding: 20px; border-radius: 22px; gap: 16px; }
-  .gio-partner-title { font-size: 1.35rem; }
-  .gio-partner-title strong { display: block; margin-bottom: 3px; }
+  .gio-partner-overlay { padding: 96px 12px calc(28px + env(safe-area-inset-bottom, 0px)); }
+  .gio-partner-card { flex-basis: 320px; padding: 20px; border-radius: 22px; }
+  .gio-partner-symbol { width: 38px; height: 38px; margin-bottom: 12px; }
+  .gio-partner-title { font-size: 1.2rem; }
+  .gio-partner-title strong { font-size: 1.55rem; }
   .gio-partner-description { font-size: .875rem; }
+  .gio-partner-action { margin-top: 16px; }
   .gio-partner-action a { font-size: .8125rem; padding: 11px 14px; }
   .gio-partner-contact-inner { gap: 14px; }
 }
+@media (max-height: 560px) { .gio-partner-overlay { padding-top: 96px; padding-bottom: 24px; } }
 @media (prefers-reduced-motion: no-preference) {
-  .gio-partner-card { animation: gio-partner-arrive .95s cubic-bezier(.22, 1, .36, 1) .15s backwards; }
+  .gio-partner-card { animation: gio-partner-arrive .85s cubic-bezier(.22, 1, .36, 1) .35s backwards; }
   .gio-partner-card:focus-within { transform: none !important; opacity: 1 !important; }
-  @keyframes gio-partner-arrive { from { opacity: 0; transform: translateX(100vw); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes gio-partner-arrive { from { opacity: 0; transform: translateX(calc(100% + 32px)); } to { opacity: 1; transform: translateX(0); } }
 }
 @media (prefers-reduced-motion: reduce) { .gio-partner-action a { transition: none; } }

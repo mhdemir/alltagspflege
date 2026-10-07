@@ -88,7 +88,7 @@ const Home = () => {
     <>
       <PartnerRecommendation />
       {/* --- HERO SEKTION MIT VIDEO & BEWERTUNGS-FLIESSBAND --- */}
-      <section id="hero" className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-black pt-12 sm:pt-16 pb-6">
+      <section id="hero" className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-black pt-28 sm:pt-36 pb-6">
         <div className="absolute inset-0 z-0">
           <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60">
             <source src="/videos/V1.mp4" type="video/mp4" />
