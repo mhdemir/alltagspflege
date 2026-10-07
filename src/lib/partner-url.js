@@ -4,5 +4,8 @@ const isLocalPreview = typeof window !== 'undefined'
   && ['localhost', '127.0.0.1', '[::1]'].includes(window.location.hostname);
 
 export const annaPartnerUrl = isLocalPreview
-  ? 'http://127.0.0.1:4321/'
-  : 'https://anna-alltagsbetreuung.de/';
+  ? 'http://127.0.0.1:4321/?partner=gio'
+  : 'https://anna-alltagsbetreuung.de/?partner=gio';
+
+// The fixed partner entry avoids homepage copies cached before the cooperation
+// launch. It is not a visitor identifier and does not store or track anything.
