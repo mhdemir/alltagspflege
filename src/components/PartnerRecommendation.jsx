@@ -1,8 +1,8 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { ArrowUpRight, HeartHandshake, X } from 'lucide-react';
 import './PartnerRecommendation.css';
+import { annaPartnerUrl as partnerUrl } from '../lib/partner-url';
 
-const partnerUrl = 'https://anna-alltagsbetreuung.de/';
 const compactViewportQuery = '(max-width: 767px), (max-width: 1023px) and (max-height: 560px)';
 
 export default function PartnerRecommendation({ variant = 'welcome' }) {
