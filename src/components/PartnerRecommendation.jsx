@@ -62,7 +62,6 @@ export default function PartnerRecommendation({ variant = 'welcome' }) {
         </div>
         <div className="gio-partner-action">
           <a href={partnerUrl}>Zu Anna Alltagsbetreuung <ArrowUpRight size={18} aria-hidden="true" /></a>
-          <span>Anna Alltagsbetreuung · Essen</span>
         </div>
       </aside>
     </div>
