@@ -1,4 +1,5 @@
 .gio-partner-welcome {
+  overflow-x: clip;
   padding: 96px 24px 20px;
   background: #fdfbf5;
 }
@@ -98,7 +99,8 @@
   .gio-partner-contact-inner { gap: 14px; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .gio-partner-card { animation: gio-partner-arrive .6s ease-out both; }
-  @keyframes gio-partner-arrive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .gio-partner-card { animation: gio-partner-arrive .95s cubic-bezier(.22, 1, .36, 1) .15s backwards; }
+  .gio-partner-card:focus-within { transform: none !important; opacity: 1 !important; }
+  @keyframes gio-partner-arrive { from { opacity: 0; transform: translateX(100vw); } to { opacity: 1; transform: translateX(0); } }
 }
 @media (prefers-reduced-motion: reduce) { .gio-partner-action a { transition: none; } }

@@ -43,7 +43,7 @@ export default function PartnerRecommendation({ variant = 'welcome' }) {
         <span className="gio-partner-symbol" aria-hidden="true"><HeartHandshake size={30} strokeWidth={1.3} /></span>
         <div>
           <span className="gio-partner-eyebrow">Freundschaft, die verbindet</span>
-          <p className="gio-partner-title"><strong>Giò &amp; Danie.</strong> Gemeinsam für Sie da.</p>
+          <p className="gio-partner-title"><strong>Danie &amp; Giò.</strong> Gemeinsam für Sie da.</p>
           <p className="gio-partner-description">Uns verbindet eine Freundschaft und der Wunsch, Menschen den Alltag leichter zu machen. Deshalb arbeiten wir zusammen und empfehlen Ihnen gerne auch Danielas Anna Alltagsbetreuung in Essen.</p>
         </div>
         <div className="gio-partner-action">
