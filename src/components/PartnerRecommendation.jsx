@@ -1,17 +1,30 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, HeartHandshake, X } from 'lucide-react';
 import './PartnerRecommendation.css';
 
 const partnerUrl = 'https://anna-alltagsbetreuung.de/';
+const compactViewportQuery = '(max-width: 767px), (max-width: 1023px) and (max-height: 560px)';
 
 export default function PartnerRecommendation({ variant = 'welcome' }) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(() => typeof window !== 'undefined' && !window.matchMedia(compactViewportQuery).matches);
+  const overlay = useRef(null);
   const closeButton = useRef(null);
   const reopenButton = useRef(null);
   const setPartnerOpen = (open) => {
     setIsOpen(open);
     requestAnimationFrame(() => (open ? closeButton : reopenButton).current?.focus({ preventScroll: true }));
   };
+  useEffect(() => {
+    if (variant !== 'welcome') return;
+    const compactViewport = window.matchMedia(compactViewportQuery);
+    const updateViewport = (event) => {
+      const moveFocus = overlay.current?.contains(document.activeElement);
+      setIsOpen(!event.matches);
+      if (moveFocus) requestAnimationFrame(() => (event.matches ? reopenButton : closeButton).current?.focus({ preventScroll: true }));
+    };
+    compactViewport.addEventListener('change', updateViewport);
+    return () => compactViewport.removeEventListener('change', updateViewport);
+  }, [variant]);
   if (variant === 'contact') {
     return (
       <aside className="gio-partner-contact" aria-label="Unsere Empfehlung in Essen">
@@ -46,7 +59,7 @@ export default function PartnerRecommendation({ variant = 'welcome' }) {
   }
 
   return (
-    <div className="gio-partner-overlay">
+    <div ref={overlay} className="gio-partner-overlay">
       <button ref={reopenButton} className="gio-partner-reopen" type="button" aria-controls="gio-partner-panel" aria-expanded={isOpen} hidden={isOpen} onClick={() => setPartnerOpen(true)}><HeartHandshake size={20} aria-hidden="true" /> Gemeinsam für Sie da</button>
       <aside id="gio-partner-panel" className="gio-partner-card" aria-label="Kooperation von Alltagsbetreuung Giò und Anna Alltagsbetreuung" hidden={!isOpen} onKeyDown={(event) => { if (event.key === 'Escape') { event.preventDefault(); setPartnerOpen(false); } }}>
         <button ref={closeButton} className="gio-partner-close" type="button" aria-label="Kooperationshinweis schließen" onClick={() => setPartnerOpen(false)}><X size={19} aria-hidden="true" /></button>
