@@ -18,9 +18,9 @@ export default function PartnerRecommendation({ variant = 'welcome' }) {
         <div className="gio-partner-contact-inner">
           <HeartHandshake size={28} strokeWidth={1.5} aria-hidden="true" />
           <div>
-            <p><strong>Auch in Essen in vertrauten Händen.</strong></p>
-            <p>Mit Danie von Anna Alltagsbetreuung verbindet uns eine Freundschaft. Wenn der Wohnort oder die passenden Zeiten dafür sprechen, empfehlen wir Ihnen gerne auch ihre Unterstützung.</p>
-            <a href={partnerUrl}>Lernen Sie Danie und Anna kennen <ArrowUpRight size={18} aria-hidden="true" /></a>
+            <p><strong>Gemeinsam passende Unterstützung finden.</strong></p>
+            <p>Wir kooperieren mit Anna Alltagsbetreuung in Essen, um Betreuung nach Wohnort, Bedarf und verfügbaren Zeiten besser abzustimmen. Sprechen Sie uns gerne darauf an.</p>
+            <a href={partnerUrl}>Anna Alltagsbetreuung kennenlernen <ArrowUpRight size={18} aria-hidden="true" /></a>
           </div>
         </div>
       </aside>
@@ -32,13 +32,13 @@ export default function PartnerRecommendation({ variant = 'welcome' }) {
       <section className="gio-partner-story" aria-labelledby="gio-partner-story-title">
         <div className="gio-partner-story-inner">
           <div>
-            <span className="gio-partner-eyebrow">Persönlich verbunden</span>
-            <h2 id="gio-partner-story-title">Wir schauen gemeinsam,<br />was zu Ihnen passt.</h2>
+            <span className="gio-partner-eyebrow">Unsere Kooperation</span>
+            <h2 id="gio-partner-story-title">Gemeinsam mehr<br />möglich machen.</h2>
           </div>
           <div className="gio-partner-story-copy">
-            <p>Manchmal ist es der kürzere Weg, manchmal sind es die passenden Zeiten. Mit Danie von Anna Alltagsbetreuung in Essen haben wir einen vertrauten Kontakt, den wir Ihnen gerne empfehlen, wenn eine Begleitung dort gut zu Ihrem Alltag passt.</p>
-            <p>Sprechen Sie uns auf unsere Zusammenarbeit an. Welche Unterstützung und Termine möglich sind, klären wir im persönlichen Gespräch.</p>
-            <a href={partnerUrl}>Danie und Anna Alltagsbetreuung kennenlernen <ArrowUpRight size={18} aria-hidden="true" /></a>
+            <p>Alltagsbetreuung Giò und Anna Alltagsbetreuung kooperieren, um Menschen mit Unterstützungsbedarf und ihre Angehörigen im Alltag besser zu begleiten.</p>
+            <p>Wir stimmen Einsatzgebiete, Zeiten und verfügbare Kapazitäten ab. So können wir Betreuung gemeinsam besser organisieren und passende Unterstützung finden. Welche Möglichkeiten es für Sie gibt, besprechen wir persönlich.</p>
+            <a href={partnerUrl}>Anna Alltagsbetreuung kennenlernen <ArrowUpRight size={18} aria-hidden="true" /></a>
           </div>
         </div>
       </section>
@@ -47,17 +47,21 @@ export default function PartnerRecommendation({ variant = 'welcome' }) {
 
   return (
     <div className="gio-partner-overlay">
-      <button ref={reopenButton} className="gio-partner-reopen" type="button" aria-controls="gio-partner-panel" aria-expanded={isOpen} hidden={isOpen} onClick={() => setPartnerOpen(true)}><HeartHandshake size={20} aria-hidden="true" /> Mit Danie verbunden</button>
-      <aside id="gio-partner-panel" className="gio-partner-card" aria-label="Unsere Freundschaft mit Anna Alltagsbetreuung" hidden={!isOpen} onKeyDown={(event) => { if (event.key === 'Escape') { event.preventDefault(); setPartnerOpen(false); } }}>
-        <button ref={closeButton} className="gio-partner-close" type="button" aria-label="Empfehlung schließen" onClick={() => setPartnerOpen(false)}><X size={19} aria-hidden="true" /></button>
-        <span className="gio-partner-symbol" aria-hidden="true"><HeartHandshake size={25} strokeWidth={1.3} /></span>
+      <button ref={reopenButton} className="gio-partner-reopen" type="button" aria-controls="gio-partner-panel" aria-expanded={isOpen} hidden={isOpen} onClick={() => setPartnerOpen(true)}><HeartHandshake size={20} aria-hidden="true" /> Gemeinsam für Sie da</button>
+      <aside id="gio-partner-panel" className="gio-partner-card" aria-label="Kooperation von Alltagsbetreuung Giò und Anna Alltagsbetreuung" hidden={!isOpen} onKeyDown={(event) => { if (event.key === 'Escape') { event.preventDefault(); setPartnerOpen(false); } }}>
+        <button ref={closeButton} className="gio-partner-close" type="button" aria-label="Kooperationshinweis schließen" onClick={() => setPartnerOpen(false)}><X size={19} aria-hidden="true" /></button>
+        <span className="gio-partner-eyebrow gio-partner-card-eyebrow">Unsere Kooperation</span>
+        <div className="gio-partner-logos">
+          <img src="/logo/anna-alltagsbetreuung.svg" width="1402" height="748" alt="Anna Alltagsbetreuung" />
+          <HeartHandshake size={20} strokeWidth={1.4} aria-hidden="true" />
+          <img src="/logo/Logo_Alltagsbetreuung.png" width="132" height="78" alt="Alltagsbetreuung Giò" />
+        </div>
         <div>
-          <span className="gio-partner-eyebrow">Freundschaft, die verbindet</span>
-          <p className="gio-partner-title"><strong>Danie &amp; Giò.</strong> Gemeinsam für Sie da.</p>
-          <p className="gio-partner-description">Uns verbindet eine Freundschaft und der Wunsch, Ihren Alltag leichter zu machen. Deshalb empfehlen wir Ihnen gerne auch Danielas Anna Alltagsbetreuung in Essen.</p>
+          <p className="gio-partner-title">Gemeinsam für mehr Unterstützung im Alltag.</p>
+          <p className="gio-partner-description">Zwei Betreuungsdienste, die Hand in Hand arbeiten. Für Sie und Ihre Angehörigen.</p>
         </div>
         <div className="gio-partner-action">
-          <a href={partnerUrl}>Lernen Sie Danie und Anna kennen <ArrowUpRight size={18} aria-hidden="true" /></a>
+          <a href={partnerUrl}>Zu Anna Alltagsbetreuung <ArrowUpRight size={18} aria-hidden="true" /></a>
           <span>Anna Alltagsbetreuung · Essen</span>
         </div>
       </aside>
