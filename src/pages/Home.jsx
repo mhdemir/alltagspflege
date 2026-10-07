@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ShieldCheck, Clock, MapPin, Coffee, ShoppingCart, Brain, Sparkles, ArrowRight, Users, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import GoogleReviewsTicker from '../components/GoogleReviews/GoogleReviewsTicker';
+import PartnerRecommendation from '../components/PartnerRecommendation';
 
 const Home = () => {
   const previewServices = [
@@ -85,8 +86,9 @@ const Home = () => {
 
   return (
     <>
+      <PartnerRecommendation />
       {/* --- HERO SEKTION MIT VIDEO & BEWERTUNGS-FLIESSBAND --- */}
-      <section id="hero" className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-black pt-28 sm:pt-36 pb-6">
+      <section id="hero" className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-black pt-12 sm:pt-16 pb-6">
         <div className="absolute inset-0 z-0">
           <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60">
             <source src="/videos/V1.mp4" type="video/mp4" />
@@ -98,7 +100,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-6 relative z-10 w-full my-auto">
           <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="max-w-3xl text-left">
             <h2 className="text-[#84A07F] font-black uppercase tracking-[0.4em] mb-4 text-sm md:text-base">Alltagsbetreuung Giò</h2>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-8 text-white">
+            <h1 className="text-[clamp(2rem,9.5vw,3rem)] md:text-7xl lg:text-8xl font-black leading-[1.05] mb-8 text-white">
               Mehr Zeit.<br /><span className="text-[#84A07F]">Mehr Lebensqualität.</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-xl leading-relaxed font-medium">
@@ -234,8 +236,8 @@ const Home = () => {
                     <div className={`p-3 rounded-2xl bg-white text-[#84A07F] shadow-sm group-hover:bg-[#84A07F] group-hover:text-white transition-colors duration-300`}>
                       {service.icon}
                     </div>
-                    <div>
-                      <h4 className="text-2xl font-black text-[#2D2E28] mb-2 group-hover:text-[#84A07F] transition-colors">{service.title}</h4>
+                    <div className="min-w-0">
+                      <h4 className="text-2xl font-black text-[#2D2E28] mb-2 group-hover:text-[#84A07F] transition-colors break-words hyphens-auto">{service.title}</h4>
                       <p className="text-[#2D2E28]/70 font-medium leading-relaxed">
                         {service.description}
                       </p>
@@ -306,8 +308,8 @@ const Home = () => {
                     <div className={`p-3 rounded-2xl bg-[#FDFCF5] text-[#84A07F] border border-[#F3EFD2] group-hover:bg-[#84A07F] group-hover:text-white transition-colors duration-300`}>
                       {info.icon}
                     </div>
-                    <div>
-                      <h4 className="text-2xl font-black text-[#2D2E28] mb-2 group-hover:text-[#84A07F] transition-colors">{info.title}</h4>
+                    <div className="min-w-0">
+                      <h4 className="text-2xl font-black text-[#2D2E28] mb-2 group-hover:text-[#84A07F] transition-colors break-words hyphens-auto">{info.title}</h4>
                       <p className="text-[#2D2E28]/70 font-medium leading-relaxed">
                         {info.description}
                       </p>
@@ -319,6 +321,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <PartnerRecommendation variant="story" />
     </>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Send, Clock } from 'lucide-react';
+import PartnerRecommendation from '../components/PartnerRecommendation';
 
 const Contact = () => {
   return (
@@ -132,6 +133,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
+      <PartnerRecommendation variant="contact" />
     </div>
   );
 };

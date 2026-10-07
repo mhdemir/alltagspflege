@@ -65,6 +65,11 @@ const Footer = () => {
           </div>
         </div>
 
+        <div className="mb-10 rounded-2xl bg-[#f8f0e3] px-6 py-5">
+          <p className="mb-2 text-xs font-semibold text-[#925d41]">Freundschaft, die verbindet</p>
+          <a href="https://anna-alltagsbetreuung.de/" className="inline-block text-sm font-bold text-[#4B6348] underline underline-offset-4 hover:text-[#2D2E28] focus-visible:outline-2 focus-visible:outline-offset-4">Unsere Partnerin: Danie von Anna Alltagsbetreuung in Essen ↗</a>
+        </div>
+
         <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
           <Link to="/impressum" className="font-bold text-[#2D2E28]/60 hover:text-[#84A07F] text-xs uppercase tracking-widest">Impressum</Link>
           <span className="text-[#F3EFD2]">|</span>
