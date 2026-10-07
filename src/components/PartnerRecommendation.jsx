@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { ArrowUpRight, HeartHandshake, X } from 'lucide-react';
 import './PartnerRecommendation.css';
 
@@ -6,24 +6,61 @@ const partnerUrl = 'https://anna-alltagsbetreuung.de/';
 const compactViewportQuery = '(max-width: 767px), (max-width: 1023px) and (max-height: 560px)';
 
 export default function PartnerRecommendation({ variant = 'welcome' }) {
-  const [isOpen, setIsOpen] = useState(() => typeof window !== 'undefined' && !window.matchMedia(compactViewportQuery).matches);
+  const [isOpen, setIsOpen] = useState(false);
+  const arrivalFrame = useRef(0);
   const overlay = useRef(null);
+  const card = useRef(null);
   const closeButton = useRef(null);
   const reopenButton = useRef(null);
   const setPartnerOpen = (open) => {
+    cancelAnimationFrame(arrivalFrame.current);
     setIsOpen(open);
     requestAnimationFrame(() => (open ? closeButton : reopenButton).current?.focus({ preventScroll: true }));
   };
+  useLayoutEffect(() => {
+    if (variant !== 'welcome') return;
+    const root = overlay.current;
+    const panel = card.current;
+    const button = reopenButton.current;
+    const compactViewport = window.matchMedia(compactViewportQuery);
+    const measurePartner = () => {
+      const styles = getComputedStyle(root);
+      const availableWidth = Math.max(0, root.clientWidth - parseFloat(styles.paddingLeft) - parseFloat(styles.paddingRight));
+      const availableHeight = Math.max(0, root.clientHeight - parseFloat(styles.paddingTop) - parseFloat(styles.paddingBottom));
+      const width = Math.min(availableWidth, parseFloat(styles.getPropertyValue('--partner-card-width')));
+      const heightLimit = Math.min(availableHeight, window.innerHeight * (compactViewport.matches ? .62 : 1));
+      root.style.setProperty('--partner-available-width', `${Math.max(0, availableWidth - 2)}px`);
+      root.style.setProperty('--partner-expanded-width', `${width}px`);
+      root.style.setProperty('--partner-inner-width', `${Math.max(0, width - 2)}px`);
+      root.style.setProperty('--partner-card-max-height', `${Math.max(0, heightLimit - 2)}px`);
+      root.style.setProperty('--partner-expanded-height', `${Math.ceil(panel.getBoundingClientRect().height) + 2}px`);
+      root.style.setProperty('--partner-collapsed-width', `${Math.ceil(button.getBoundingClientRect().width) + 2}px`);
+      root.style.setProperty('--partner-collapsed-height', `${Math.ceil(button.getBoundingClientRect().height) + 2}px`);
+    };
+    measurePartner();
+    const sizeObserver = new ResizeObserver(measurePartner);
+    [root, panel, button].forEach(element => sizeObserver.observe(element));
+    return () => sizeObserver.disconnect();
+  }, [variant]);
   useEffect(() => {
     if (variant !== 'welcome') return;
     const compactViewport = window.matchMedia(compactViewportQuery);
+    if (!compactViewport.matches) {
+      arrivalFrame.current = requestAnimationFrame(() => {
+        arrivalFrame.current = requestAnimationFrame(() => setIsOpen(!compactViewport.matches));
+      });
+    }
     const updateViewport = (event) => {
+      cancelAnimationFrame(arrivalFrame.current);
       const moveFocus = overlay.current?.contains(document.activeElement);
       setIsOpen(!event.matches);
       if (moveFocus) requestAnimationFrame(() => (event.matches ? reopenButton : closeButton).current?.focus({ preventScroll: true }));
     };
     compactViewport.addEventListener('change', updateViewport);
-    return () => compactViewport.removeEventListener('change', updateViewport);
+    return () => {
+      cancelAnimationFrame(arrivalFrame.current);
+      compactViewport.removeEventListener('change', updateViewport);
+    };
   }, [variant]);
   if (variant === 'contact') {
     return (
@@ -59,24 +96,26 @@ export default function PartnerRecommendation({ variant = 'welcome' }) {
   }
 
   return (
-    <div ref={overlay} className="gio-partner-overlay">
-      <button ref={reopenButton} className="gio-partner-reopen" type="button" aria-controls="gio-partner-panel" aria-expanded={isOpen} hidden={isOpen} onClick={() => setPartnerOpen(true)}><HeartHandshake size={20} aria-hidden="true" /> Gemeinsam für Sie da</button>
-      <aside id="gio-partner-panel" className="gio-partner-card" aria-label="Kooperation von Alltagsbetreuung Giò und Anna Alltagsbetreuung" hidden={!isOpen} onKeyDown={(event) => { if (event.key === 'Escape') { event.preventDefault(); setPartnerOpen(false); } }}>
-        <button ref={closeButton} className="gio-partner-close" type="button" aria-label="Kooperationshinweis schließen" onClick={() => setPartnerOpen(false)}><X size={19} aria-hidden="true" /></button>
-        <span className="gio-partner-eyebrow gio-partner-card-eyebrow">Unsere Kooperation</span>
-        <div className="gio-partner-logos">
-          <img src="/logo/anna-alltagsbetreuung.svg" width="1402" height="748" alt="Anna Alltagsbetreuung" />
-          <HeartHandshake size={20} strokeWidth={1.4} aria-hidden="true" />
-          <img src="/logo/Logo_Alltagsbetreuung.png" width="132" height="78" alt="Alltagsbetreuung Giò" />
-        </div>
-        <div>
-          <p className="gio-partner-title">Gemeinsam für mehr Unterstützung im Alltag.</p>
-          <p className="gio-partner-description">Zwei Betreuungsdienste, die Hand in Hand arbeiten. Für Sie und Ihre Angehörigen.</p>
-        </div>
-        <div className="gio-partner-action">
-          <a href={partnerUrl}>Zu Anna Alltagsbetreuung</a>
-        </div>
-      </aside>
+    <div ref={overlay} className="gio-partner-overlay" data-open={isOpen}>
+      <div className="gio-partner-surface">
+        <button ref={reopenButton} className="gio-partner-reopen" type="button" aria-controls="gio-partner-panel" aria-expanded={isOpen} inert={isOpen} onClick={() => setPartnerOpen(true)}><HeartHandshake size={20} aria-hidden="true" /> Gemeinsam für Sie da</button>
+        <aside ref={card} id="gio-partner-panel" className="gio-partner-card" aria-label="Kooperation von Alltagsbetreuung Giò und Anna Alltagsbetreuung" inert={!isOpen} onKeyDown={(event) => { if (event.key === 'Escape') { event.preventDefault(); setPartnerOpen(false); } }}>
+          <button ref={closeButton} className="gio-partner-close" type="button" aria-label="Kooperationshinweis schließen" onClick={() => setPartnerOpen(false)}><X size={19} aria-hidden="true" /></button>
+          <span className="gio-partner-eyebrow gio-partner-card-eyebrow">Unsere Kooperation</span>
+          <div className="gio-partner-logos">
+            <img src="/logo/anna-alltagsbetreuung.svg" width="1402" height="748" alt="Anna Alltagsbetreuung" />
+            <HeartHandshake size={20} strokeWidth={1.4} aria-hidden="true" />
+            <img src="/logo/Logo_Alltagsbetreuung.png" width="132" height="78" alt="Alltagsbetreuung Giò" />
+          </div>
+          <div>
+            <p className="gio-partner-title">Gemeinsam für mehr Unterstützung im Alltag.</p>
+            <p className="gio-partner-description">Zwei Betreuungsdienste, die Hand in Hand arbeiten. Für Sie und Ihre Angehörigen.</p>
+          </div>
+          <div className="gio-partner-action">
+            <a href={partnerUrl}>Zu Anna Alltagsbetreuung</a>
+          </div>
+        </aside>
+      </div>
     </div>
   );
 }
