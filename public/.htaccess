@@ -1,0 +1,15 @@
+# Check for the latest document on each visit, including partner referrals.
+# Vite's fingerprinted scripts, styles and images retain normal asset caching.
+<IfModule mod_headers.c>
+    <FilesMatch "\.html$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+</IfModule>
+
+# Direct requests to React routes must load the application document.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.html [L]
+</IfModule>

@@ -32,7 +32,8 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: 22
-          source: "dist/**"
+          # Include the directory itself so hidden files such as .htaccess ship too.
+          source: "dist/"
           target: "dist"
           strip_components: 1
           overwrite: true
