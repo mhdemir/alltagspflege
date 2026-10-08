@@ -9,7 +9,7 @@ const Contact = () => {
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
-    const requestType = form.querySelector('[name="request_type"]')?.value || 'Allgemeine Anfrage';
+    const requestType = form.querySelector('[name="Anliegen"]')?.value || 'Allgemeine Anfrage';
     form.querySelector('[name="_subject"]').value = `Anfrage: ${requestType}`;
     setStatus('Ihre Nachricht wird gesendet …');
     setSubmitted(true);
@@ -94,7 +94,7 @@ const Contact = () => {
                     <label className="text-sm font-black uppercase tracking-widest text-[#2D2E28]/60 ml-2">Name</label>
                     <input 
                       type="text" 
-                      required name="name" autoComplete="name" placeholder="Ihr Name"
+                      required name="Name" autoComplete="name" placeholder="Ihr Name"
                       className="w-full bg-[#FDFCF5] border-2 border-[#F3EFD2] rounded-2xl px-6 py-4 focus:border-[#84A07F] outline-none transition-colors font-bold text-[#2D2E28]"
                     />
                   </div>
@@ -102,7 +102,7 @@ const Contact = () => {
                     <label className="text-sm font-black uppercase tracking-widest text-[#2D2E28]/60 ml-2">Telefon</label>
                     <input 
                       type="tel" 
-                      name="phone" autoComplete="tel" placeholder="Ihre Nummer"
+                      name="Telefon" autoComplete="tel" placeholder="Ihre Nummer"
                       className="w-full bg-[#FDFCF5] border-2 border-[#F3EFD2] rounded-2xl px-6 py-4 focus:border-[#84A07F] outline-none transition-colors font-bold text-[#2D2E28]"
                     />
                   </div>
@@ -119,7 +119,7 @@ const Contact = () => {
 
                 <div className="space-y-2">
                   <label className="text-sm font-black uppercase tracking-widest text-[#2D2E28]/60 ml-2">Anliegen</label>
-                  <select required name="request_type" defaultValue="" className="w-full bg-[#FDFCF5] border-2 border-[#F3EFD2] rounded-2xl px-6 py-4 focus:border-[#84A07F] outline-none transition-colors font-bold text-[#2D2E28] appearance-none">
+                  <select required name="Anliegen" defaultValue="" className="w-full bg-[#FDFCF5] border-2 border-[#F3EFD2] rounded-2xl px-6 py-4 focus:border-[#84A07F] outline-none transition-colors font-bold text-[#2D2E28] appearance-none">
                     <option value="" disabled>Bitte auswählen</option>
                     <option>Allgemeine Anfrage</option>
                     <option>Alltagsbegleitung</option>
@@ -136,13 +136,13 @@ const Contact = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-black uppercase tracking-widest text-[#2D2E28]/60 ml-2">Nachricht</label>
                   <textarea 
-                    required name="message" rows="4"
+                    required name="Nachricht" rows="4"
                     placeholder="Wie können wir Ihnen helfen?"
                     className="w-full bg-[#FDFCF5] border-2 border-[#F3EFD2] rounded-2xl px-6 py-4 focus:border-[#84A07F] outline-none transition-colors font-bold text-[#2D2E28] resize-none"
                   ></textarea>
                 </div>
 
-                <label className="flex items-start gap-3 text-xs leading-relaxed text-[#2D2E28]/60"><input required type="checkbox" name="privacy_consent" value="Ja" className="mt-1 accent-[#84A07F]" /> <span>Ich stimme der Verarbeitung meiner Angaben zur Beantwortung meiner Anfrage zu. <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">Datenschutz</a></span></label>
+                <label className="flex items-start gap-3 text-xs leading-relaxed text-[#2D2E28]/60"><input required type="checkbox" name="Datenschutz" value="Ja" className="mt-1 accent-[#84A07F]" /> <span>Ich stimme der Verarbeitung meiner Angaben zur Beantwortung meiner Anfrage zu. <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">Datenschutz</a></span></label>
                 <button type="submit" className="w-full bg-[#2D2E28] text-white py-6 rounded-2xl font-black text-lg hover:bg-[#84A07F] transition-all flex items-center justify-center gap-3 shadow-xl group disabled:opacity-60">
                   Anfrage senden
                   <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
