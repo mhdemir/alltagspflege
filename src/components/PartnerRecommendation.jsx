@@ -70,7 +70,7 @@ export default function PartnerRecommendation({ variant = 'welcome' }) {
           <div>
             <p><strong>Gemeinsam passende Unterstützung finden.</strong></p>
             <p>Wir kooperieren mit Anna Alltagsbetreuung in Essen, um Betreuung nach Wohnort, Bedarf und verfügbaren Zeiten besser abzustimmen. Sprechen Sie uns gerne darauf an.</p>
-            <a href={partnerUrl}>Anna Alltagsbetreuung kennenlernen <ArrowUpRight size={18} aria-hidden="true" /></a>
+            <a href={partnerUrl} target="_blank" rel="noopener noreferrer">Anna Alltagsbetreuung kennenlernen <ArrowUpRight size={18} aria-hidden="true" /></a>
           </div>
         </div>
       </aside>
@@ -88,7 +88,7 @@ export default function PartnerRecommendation({ variant = 'welcome' }) {
           <div className="gio-partner-story-copy">
             <p>Alltagsbetreuung Giò und Anna Alltagsbetreuung kooperieren, um Menschen mit Unterstützungsbedarf und ihre Angehörigen im Alltag besser zu begleiten.</p>
             <p>Wir stimmen Einsatzgebiete, Zeiten und verfügbare Kapazitäten ab. So können wir Betreuung gemeinsam besser organisieren und passende Unterstützung finden. Welche Möglichkeiten es für Sie gibt, besprechen wir persönlich.</p>
-            <a href={partnerUrl}>Anna Alltagsbetreuung kennenlernen <ArrowUpRight size={18} aria-hidden="true" /></a>
+            <a href={partnerUrl} target="_blank" rel="noopener noreferrer">Anna Alltagsbetreuung kennenlernen <ArrowUpRight size={18} aria-hidden="true" /></a>
           </div>
         </div>
       </section>
@@ -112,7 +112,7 @@ export default function PartnerRecommendation({ variant = 'welcome' }) {
             <p className="gio-partner-description">Zwei Betreuungsdienste, die Hand in Hand arbeiten. Für Sie und Ihre Angehörigen.</p>
           </div>
           <div className="gio-partner-action">
-            <a href={partnerUrl}>Zu Anna Alltagsbetreuung</a>
+            <a href={partnerUrl} target="_blank" rel="noopener noreferrer">Zu Anna Alltagsbetreuung</a>
           </div>
         </aside>
       </div>
