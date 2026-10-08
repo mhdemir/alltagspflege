@@ -84,7 +84,7 @@ const Contact = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-white p-8 lg:p-12 rounded-[3rem] shadow-2xl border border-[#F3EFD2]"
             >
-              <form className="space-y-6" action="https://formsubmit.co/info@giohilft.com" method="POST" target="gio-contact-submit-frame" onSubmit={handleSubmit}>
+              <form className="space-y-6" action="https://formsubmit.co/el/lurodo" method="POST" target="gio-contact-submit-frame" onSubmit={handleSubmit}>
                 <input type="hidden" name="_subject" value="Neue Anfrage über giohilft.de" />
                 <input type="hidden" name="_autoresponse" value="Vielen Dank für Ihre Nachricht an Alltagsbetreuung Giò. Ihre Anfrage ist bei uns angekommen. Wir melden uns persönlich bei Ihnen." />
                 <input type="text" name="_honey" tabIndex="-1" autoComplete="off" className="hidden" aria-hidden="true" />
@@ -154,7 +154,7 @@ const Contact = () => {
               </form>
               <iframe name="gio-contact-submit-frame" title="Formularversand" className="hidden" aria-hidden="true" onLoad={() => {
                 if (!submitted) return;
-                const form = document.querySelector('form[action="https://formsubmit.co/info@giohilft.com"]');
+                const form = document.querySelector('form[action="https://formsubmit.co/el/lurodo"]');
                 form?.reset();
                 setStatus('Danke. Ihre Nachricht ist angekommen. Wir melden uns persönlich bei Ihnen.');
                 setSubmitted(false);
