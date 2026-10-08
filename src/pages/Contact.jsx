@@ -5,25 +5,16 @@ import PartnerRecommendation from '../components/PartnerRecommendation';
 
 const Contact = () => {
   const [status, setStatus] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = (event) => {
     const form = event.currentTarget;
-    const data = new FormData(form);
-    data.set('_subject', `Anfrage: ${data.get('request_type') || 'Allgemeine Anfrage'}`);
+    const requestType = form.querySelector('[name="request_type"]')?.value || 'Allgemeine Anfrage';
+    form.querySelector('[name="_subject"]').value = `Anfrage: ${requestType}`;
     setStatus('Ihre Nachricht wird gesendet …');
+    setSubmitted(true);
     const button = form.querySelector('button[type="submit"]');
     if (button) button.disabled = true;
-    try {
-      const response = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: data });
-      if (!response.ok) throw new Error('send-failed');
-      form.reset();
-      setStatus('Danke. Ihre Nachricht ist angekommen. Wir melden uns persönlich bei Ihnen.');
-    } catch {
-      setStatus('Das hat gerade nicht geklappt. Bitte versuchen Sie es erneut oder rufen Sie uns an.');
-    } finally {
-      if (button) button.disabled = false;
-    }
   };
 
   return (
@@ -93,10 +84,9 @@ const Contact = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-white p-8 lg:p-12 rounded-[3rem] shadow-2xl border border-[#F3EFD2]"
             >
-              <form className="space-y-6" action="https://formsubmit.co/ajax/info@giohilft.com" method="POST" onSubmit={handleSubmit}>
+              <form className="space-y-6" action="https://formsubmit.co/info@giohilft.com" method="POST" target="gio-contact-submit-frame" onSubmit={handleSubmit}>
                 <input type="hidden" name="_subject" value="Neue Anfrage über giohilft.de" />
                 <input type="hidden" name="_autoresponse" value="Vielen Dank für Ihre Nachricht an Alltagsbetreuung Giò. Ihre Anfrage ist bei uns angekommen. Wir melden uns persönlich bei Ihnen." />
-                <input type="hidden" name="_captcha" value="false" />
                 <input type="text" name="_honey" tabIndex="-1" autoComplete="off" className="hidden" aria-hidden="true" />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -162,6 +152,15 @@ const Contact = () => {
                   Mit dem Absenden akzeptieren Sie unsere Datenschutzbestimmungen.
                 </p>
               </form>
+              <iframe name="gio-contact-submit-frame" title="Formularversand" className="hidden" aria-hidden="true" onLoad={() => {
+                if (!submitted) return;
+                const form = document.querySelector('form[action="https://formsubmit.co/info@giohilft.com"]');
+                form?.reset();
+                setStatus('Danke. Ihre Nachricht ist angekommen. Wir melden uns persönlich bei Ihnen.');
+                setSubmitted(false);
+                const button = form?.querySelector('button[type="submit"]');
+                if (button) button.disabled = false;
+              }} />
             </motion.div>
           </div>
         </div>
