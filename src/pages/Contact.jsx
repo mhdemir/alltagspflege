@@ -126,9 +126,7 @@ const Contact = () => {
                     <option>Haushaltshilfe</option>
                     <option>Demenzbetreuung</option>
                     <option>Freizeit und Ausflüge</option>
-                    <option>Unterstützung bei Pflegegrad</option>
                     <option>Rückruf gewünscht</option>
-                    <option>Beratung Pflegegrad</option>
                     <option>Sonstiges</option>
                   </select>
                 </div>
