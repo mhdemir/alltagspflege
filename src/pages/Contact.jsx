@@ -87,6 +87,7 @@ const Contact = () => {
               <form className="space-y-6" action="https://formsubmit.co/info@giohilft.com" method="POST" target="gio-contact-submit-frame" onSubmit={handleSubmit}>
                 <input type="hidden" name="_subject" value="Neue Anfrage über giohilft.de" />
                 <input type="hidden" name="_autoresponse" value="Vielen Dank für Ihre Nachricht an Alltagsbetreuung Giò. Ihre Anfrage ist bei uns angekommen. Wir melden uns persönlich bei Ihnen." />
+                <input type="hidden" name="_template" value="table" />
                 <input type="text" name="_honey" tabIndex="-1" autoComplete="off" className="hidden" aria-hidden="true" />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
