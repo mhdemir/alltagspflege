@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Send, Clock } from 'lucide-react';
 import PartnerRecommendation from '../components/PartnerRecommendation';
 
 const Contact = () => {
+  const [status, setStatus] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    data.set('_subject', `Anfrage: ${data.get('request_type') || 'Allgemeine Anfrage'}`);
+    setStatus('Ihre Nachricht wird gesendet …');
+    const button = form.querySelector('button[type="submit"]');
+    if (button) button.disabled = true;
+    try {
+      const response = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: data });
+      if (!response.ok) throw new Error('send-failed');
+      form.reset();
+      setStatus('Danke. Ihre Nachricht ist angekommen. Wir melden uns persönlich bei Ihnen.');
+    } catch {
+      setStatus('Das hat gerade nicht geklappt. Bitte versuchen Sie es erneut oder rufen Sie uns an.');
+    } finally {
+      if (button) button.disabled = false;
+    }
+  };
+
   return (
     <div className="pt-32">
       <section className="py-20 lg:py-32 bg-[#FDFCF5]">
@@ -71,13 +93,17 @@ const Contact = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-white p-8 lg:p-12 rounded-[3rem] shadow-2xl border border-[#F3EFD2]"
             >
-              <form className="space-y-6">
+              <form className="space-y-6" action="https://formsubmit.co/ajax/info@giohilft.com" method="POST" onSubmit={handleSubmit}>
+                <input type="hidden" name="_subject" value="Neue Anfrage über giohilft.de" />
+                <input type="hidden" name="_autoresponse" value="Vielen Dank für Ihre Nachricht an Alltagsbetreuung Giò. Ihre Anfrage ist bei uns angekommen. Wir melden uns persönlich bei Ihnen." />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="text" name="_honey" tabIndex="-1" autoComplete="off" className="hidden" aria-hidden="true" />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-black uppercase tracking-widest text-[#2D2E28]/60 ml-2">Name</label>
                     <input 
                       type="text" 
-                      placeholder="Ihr Name"
+                      required name="name" autoComplete="name" placeholder="Ihr Name"
                       className="w-full bg-[#FDFCF5] border-2 border-[#F3EFD2] rounded-2xl px-6 py-4 focus:border-[#84A07F] outline-none transition-colors font-bold text-[#2D2E28]"
                     />
                   </div>
@@ -85,7 +111,7 @@ const Contact = () => {
                     <label className="text-sm font-black uppercase tracking-widest text-[#2D2E28]/60 ml-2">Telefon</label>
                     <input 
                       type="tel" 
-                      placeholder="Ihre Nummer"
+                      name="phone" autoComplete="tel" placeholder="Ihre Nummer"
                       className="w-full bg-[#FDFCF5] border-2 border-[#F3EFD2] rounded-2xl px-6 py-4 focus:border-[#84A07F] outline-none transition-colors font-bold text-[#2D2E28]"
                     />
                   </div>
@@ -93,7 +119,7 @@ const Contact = () => {
 
                 <div className="space-y-2">
                   <label className="text-sm font-black uppercase tracking-widest text-[#2D2E28]/60 ml-2">E-Mail</label>
-                  <input 
+                    <input required name="email" autoComplete="email"
                     type="email" 
                     placeholder="ihre@mail.de"
                     className="w-full bg-[#FDFCF5] border-2 border-[#F3EFD2] rounded-2xl px-6 py-4 focus:border-[#84A07F] outline-none transition-colors font-bold text-[#2D2E28]"
@@ -101,11 +127,16 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-black uppercase tracking-widest text-[#2D2E28]/60 ml-2">Art der Unterstützung</label>
-                  <select className="w-full bg-[#FDFCF5] border-2 border-[#F3EFD2] rounded-2xl px-6 py-4 focus:border-[#84A07F] outline-none transition-colors font-bold text-[#2D2E28] appearance-none">
+                  <label className="text-sm font-black uppercase tracking-widest text-[#2D2E28]/60 ml-2">Anliegen</label>
+                  <select required name="request_type" defaultValue="" className="w-full bg-[#FDFCF5] border-2 border-[#F3EFD2] rounded-2xl px-6 py-4 focus:border-[#84A07F] outline-none transition-colors font-bold text-[#2D2E28] appearance-none">
+                    <option value="" disabled>Bitte auswählen</option>
+                    <option>Allgemeine Anfrage</option>
                     <option>Alltagsbegleitung</option>
                     <option>Haushaltshilfe</option>
                     <option>Demenzbetreuung</option>
+                    <option>Freizeit und Ausflüge</option>
+                    <option>Unterstützung bei Pflegegrad</option>
+                    <option>Rückruf gewünscht</option>
                     <option>Beratung Pflegegrad</option>
                     <option>Sonstiges</option>
                   </select>
@@ -114,16 +145,18 @@ const Contact = () => {
                 <div className="space-y-2">
                   <label className="text-sm font-black uppercase tracking-widest text-[#2D2E28]/60 ml-2">Nachricht</label>
                   <textarea 
-                    rows="4" 
+                    required name="message" rows="4"
                     placeholder="Wie können wir Ihnen helfen?"
                     className="w-full bg-[#FDFCF5] border-2 border-[#F3EFD2] rounded-2xl px-6 py-4 focus:border-[#84A07F] outline-none transition-colors font-bold text-[#2D2E28] resize-none"
                   ></textarea>
                 </div>
 
-                <button className="w-full bg-[#2D2E28] text-white py-6 rounded-2xl font-black text-lg hover:bg-[#84A07F] transition-all flex items-center justify-center gap-3 shadow-xl group">
+                <label className="flex items-start gap-3 text-xs leading-relaxed text-[#2D2E28]/60"><input required type="checkbox" name="privacy_consent" value="Ja" className="mt-1 accent-[#84A07F]" /> <span>Ich stimme der Verarbeitung meiner Angaben zur Beantwortung meiner Anfrage zu. <a href="/datenschutz" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">Datenschutz</a></span></label>
+                <button type="submit" className="w-full bg-[#2D2E28] text-white py-6 rounded-2xl font-black text-lg hover:bg-[#84A07F] transition-all flex items-center justify-center gap-3 shadow-xl group disabled:opacity-60">
                   Anfrage senden
                   <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
+                <p role="status" aria-live="polite" className={`text-sm text-center font-bold ${status.startsWith('Danke') ? 'text-[#4B6348]' : 'text-[#925d41]'}`}>{status}</p>
                 
                 <p className="text-[10px] text-center text-[#2D2E28]/40 font-bold uppercase tracking-widest">
                   Mit dem Absenden akzeptieren Sie unsere Datenschutzbestimmungen.

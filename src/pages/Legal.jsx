@@ -142,6 +142,7 @@ export const Datenschutz = () => (
         <section>
           <h2 className="text-2xl font-black text-[#2D2E28] mb-4">4. Kontaktaufnahme</h2>
           <p>Wenn Sie uns per Kontaktformular, E-Mail oder Telefon kontaktieren, werden Ihre Angaben zur Bearbeitung Ihrer Anfrage gespeichert. Diese Daten werden nicht ohne Ihre Einwilligung weitergegeben.</p>
+          <p className="mt-2">Für das Kontaktformular nutzen wir FormSubmit. Die eingegebenen Angaben werden über eine verschlüsselte Verbindung an den Dienst übermittelt und zur Zustellung Ihrer Nachricht an info@giohilft.com verarbeitet. Rechtsgrundlage ist Ihre Einwilligung nach Art. 6 Abs. 1 Buchst. a DSGVO. Zusätzlich erhalten Sie an die angegebene E-Mail-Adresse eine automatische Eingangsbestätigung.</p>
         </section>
         <section>
           <h2 className="text-2xl font-black text-[#2D2E28] mb-4">5. Verwendung von WhatsApp</h2>
