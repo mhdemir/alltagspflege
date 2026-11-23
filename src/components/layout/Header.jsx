@@ -37,6 +37,7 @@ const Header = () => {
     { name: 'Leistungen', id: 'leistungen', type: 'scroll' },
     { name: 'Informationen', id: 'informationen', type: 'scroll' },
     { name: 'Über Mich', path: '/giuseppina-giardina', type: 'link' },
+    { name: 'Kooperation', path: '/kooperation', type: 'link' },
     { name: 'Kontakt', path: '/kontakt', type: 'link' },
   ];
 
@@ -50,7 +51,7 @@ const Header = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden xl:flex items-center gap-6">
           {navLinks.map((link) => (
             link.type === 'scroll' ? (
               <button 
@@ -90,11 +91,11 @@ const Header = () => {
         </div>
 
         {/* Mobile Actions */}
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-center gap-4 xl:hidden">
           <a href="tel:023435776700" className="p-2 text-[#84A07F] bg-[#84A07F]/10 rounded-full">
             <Phone size={20} />
           </a>
-          <button className="p-2 text-[#2D2E28]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button type="button" aria-label={isMenuOpen ? 'Menü schließen' : 'Menü öffnen'} aria-expanded={isMenuOpen} aria-controls="mobile-navigation" className="p-2 text-[#2D2E28]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -107,7 +108,8 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white overflow-hidden shadow-2xl border-t border-[#F3EFD2]"
+            id="mobile-navigation"
+            className="xl:hidden bg-white overflow-hidden shadow-2xl border-t border-[#F3EFD2]"
           >
             <div className="flex flex-col p-6 gap-6">
               {navLinks.map((link) => (

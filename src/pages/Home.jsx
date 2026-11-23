@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { ShieldCheck, Clock, MapPin, Coffee, ShoppingCart, Brain, Sparkles, ArrowRight, Users, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import GoogleReviewsTicker from '../components/GoogleReviews/GoogleReviewsTicker';
-import PartnerRecommendation from '../components/PartnerRecommendation';
 
 const Home = () => {
   const previewServices = [
@@ -86,7 +85,6 @@ const Home = () => {
 
   return (
     <>
-      <PartnerRecommendation />
       {/* --- HERO SEKTION MIT VIDEO & BEWERTUNGS-FLIESSBAND --- */}
       <section id="hero" className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-black pt-28 sm:pt-36 pb-6">
         <div className="absolute inset-0 z-0">
@@ -321,7 +319,28 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <PartnerRecommendation variant="story" />
+      <section aria-labelledby="mecfs-heading" className="py-20 lg:py-28 bg-[#F2F7F4] border-t border-[#84A07F]/20">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
+          <div>
+            <p className="text-sm font-black uppercase tracking-widest text-[#4B6348] mb-5">Alltagsbegleitung bei ME/CFS</p>
+            <h2 id="mecfs-heading" className="text-4xl lg:text-5xl font-black text-[#2D2E28] leading-tight mb-6">
+              Ich kenne ME/CFS. <span className="text-[#4B6348]">Ich nehme Sie ernst.</span>
+            </h2>
+            <p className="text-xl leading-relaxed text-[#2D2E28]/80 font-medium">
+              Ich höre Ihnen zu und bilde mich weiter, um Sie im Alltag so zu unterstützen, wie es für Sie passt.
+            </p>
+          </div>
+          <aside className="bg-white rounded-[2rem] border border-[#84A07F]/20 p-8 md:p-10 shadow-sm" aria-label="Weiterführende Anlaufstelle bei ME/CFS">
+            <h3 className="text-2xl font-black text-[#2D2E28] mb-5">Austausch und Unterstützung</h3>
+            <p className="text-[#2D2E28]/80 leading-relaxed mb-5">
+              Die ME/CFS-Selbsthilfegruppe Betzdorf/Wissen im Westerwald ist eine engagierte Anlaufstelle für Menschen mit ME/CFS und ihre Angehörigen. Tanja und Sascha sind sehr aktiv, kompetent und hilfsbereit und stehen Betroffenen auch online mit praktischen Tipps und passenden Kontakten zur Seite.
+            </p>
+            <a href="https://mecfs-westerwald.de/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-bold text-[#4B6348] underline underline-offset-4 hover:text-[#2D2E28] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4B6348]">
+              Zur ME/CFS-Selbsthilfegruppe <ArrowRight size={18} aria-hidden="true" />
+            </a>
+          </aside>
+        </div>
+      </section>
     </>
   );
 };

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { annaPartnerUrl } from '../../lib/partner-url';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -56,6 +55,7 @@ const Footer = () => {
               <li><Link to="/entlastungsbetrag-bochum" className="text-sm font-bold hover:text-[#84A07F] transition-colors">Entlastungsbetrag</Link></li>
               <li><Link to="/verhinderungspflege-bochum" className="text-sm font-bold hover:text-[#84A07F] transition-colors">Verhinderungspflege</Link></li>
               <li><Link to="/giuseppina-giardina" className="text-sm font-bold hover:text-[#84A07F] transition-colors">Über Mich</Link></li>
+              <li><Link to="/kooperation" className="text-sm font-bold hover:text-[#84A07F] transition-colors">Kooperation</Link></li>
             </ul>
           </div>
           <div className="space-y-4">
@@ -64,11 +64,6 @@ const Footer = () => {
             <p className="text-sm font-bold">Tel: 0234 357 767 00</p>
             <p className="text-sm font-bold">Mail: info@giohilft.com</p>
           </div>
-        </div>
-
-        <div className="mb-10 rounded-2xl bg-[#f8f0e3] px-6 py-5">
-          <p className="mb-2 text-xs font-semibold text-[#925d41]">Hand in Hand für Ihren Alltag</p>
-          <a href={annaPartnerUrl} target="_blank" rel="noopener noreferrer" className="inline-block text-sm font-bold text-[#4B6348] underline underline-offset-4 hover:text-[#2D2E28] focus-visible:outline-2 focus-visible:outline-offset-4">Unser Kooperationspartner: Anna Alltagsbetreuung in Essen ↗</a>
         </div>
 
         <div className="flex flex-wrap justify-center items-center gap-4 mb-8">

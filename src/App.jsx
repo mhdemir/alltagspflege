@@ -6,6 +6,7 @@ import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import AboutMe from './pages/About';
 import Contact from './pages/Contact';
+import Cooperation from './pages/Cooperation';
 import { Impressum, Datenschutz } from './pages/Legal';
 import SubPage from './pages/SubPage';
 import { pagesContent } from './data/pagesContent';
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/giuseppina-giardina" element={<AboutMe />} />
             <Route path="/kontakt" element={<Contact />} />
+            <Route path="/kooperation" element={<Cooperation />} />
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/datenschutz" element={<Datenschutz />} />
             

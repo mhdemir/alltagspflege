@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Send, Clock } from 'lucide-react';
-import PartnerRecommendation from '../components/PartnerRecommendation';
 
 const Contact = () => {
   const [status, setStatus] = useState('');
@@ -164,7 +163,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-      <PartnerRecommendation variant="contact" />
     </div>
   );
 };
