@@ -320,25 +320,39 @@ const Home = () => {
         </div>
       </section>
       <section aria-labelledby="mecfs-heading" className="py-20 lg:py-28 bg-[#F2F7F4] border-t border-[#84A07F]/20">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
-          <div>
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <figure className="relative w-full max-w-5xl mx-auto mb-10" style={{ containerType: 'inline-size' }}>
+            <img
+              src="/images/mecfs-banner-background.png"
+              width="2168"
+              height="725"
+              loading="lazy"
+              alt=""
+              className="block w-full h-auto"
+            />
+            <figcaption className="absolute inset-y-0 left-[24.5%] right-[2.5%] text-left text-[#00153A]">
+              <span className="absolute top-[15%] left-0 text-[4.4cqw] leading-none">ME/CFS</span>
+              <strong className="absolute top-[39%] left-0 whitespace-nowrap text-[5.5cqw] leading-none font-black tracking-tight">Ich nehme Sie ernst.</strong>
+              <span className="absolute top-[70%] left-0 whitespace-nowrap text-[2.4cqw] leading-none">Bei mir müssen Sie sich nicht rechtfertigen.</span>
+            </figcaption>
+          </figure>
+          <div className="max-w-4xl mx-auto">
             <p className="text-sm font-black uppercase tracking-widest text-[#4B6348] mb-5">Alltagsbegleitung bei ME/CFS</p>
             <h2 id="mecfs-heading" className="text-4xl lg:text-5xl font-black text-[#2D2E28] leading-tight mb-6">
-              Ich kenne ME/CFS. <span className="text-[#4B6348]">Ich nehme Sie ernst.</span>
+              Ich kenne ME/CFS <span className="text-[#4B6348]">und höre Ihnen zu.</span>
             </h2>
-            <p className="text-xl leading-relaxed text-[#2D2E28]/80 font-medium">
-              Ich höre Ihnen zu und bilde mich weiter, um Sie im Alltag so zu unterstützen, wie es für Sie passt.
+            <p className="text-xl leading-relaxed text-[#2D2E28]/80 font-medium mb-8">
+              Ich bilde mich weiter, um Sie im Alltag so zu unterstützen, wie es für Sie passt.
             </p>
-          </div>
-          <aside className="bg-white rounded-[2rem] border border-[#84A07F]/20 p-8 md:p-10 shadow-sm" aria-label="Weiterführende Anlaufstelle bei ME/CFS">
-            <h3 className="text-2xl font-black text-[#2D2E28] mb-5">Austausch und Unterstützung</h3>
-            <p className="text-[#2D2E28]/80 leading-relaxed mb-5">
-              Die ME/CFS-Selbsthilfegruppe Betzdorf/Wissen im Westerwald ist eine engagierte Anlaufstelle für Menschen mit ME/CFS und ihre Angehörigen. Tanja und Sascha sind sehr aktiv, kompetent und hilfsbereit und stehen Betroffenen auch online mit praktischen Tipps und passenden Kontakten zur Seite.
-            </p>
-            <a href="https://mecfs-westerwald.de/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-bold text-[#4B6348] underline underline-offset-4 hover:text-[#2D2E28] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4B6348]">
-              Zur ME/CFS-Selbsthilfegruppe <ArrowRight size={18} aria-hidden="true" />
+            <a href="https://www.instagram.com/alltagsbetreuung.bei.mecfs/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 rounded-full bg-[#4B6348] text-white px-6 py-3 font-bold hover:bg-[#2D2E28] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#4B6348] transition-colors">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="18" cy="6" r="1" fill="currentColor" stroke="none" />
+              </svg>
+              ME/CFS auf Instagram <ArrowRight size={18} aria-hidden="true" />
             </a>
-          </aside>
+          </div>
         </div>
       </section>
     </>
